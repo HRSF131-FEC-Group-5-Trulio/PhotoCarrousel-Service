@@ -14,6 +14,7 @@ var seed = function() {
   for (var i = 1; i <= 100; i++) {
     let address = Object.keys(s3_links)[i % Object.keys(s3_links).length];
     Carousel.insertOne({
+      listing_id: i,
       region: "CA", // e.g., "CA"
       city: faker.fake('{{address.city}}'),
       zipCode: faker.fake('{{address.zipCode}}'),
