@@ -23,9 +23,9 @@ function findAll(callback) {
   CarouselModel.find({}).exec(callback);
 }
 
-// findOne will retrieve the carousel associated with the given key-value
-function findOne(key, value, callback) {
-  CarouselModel.find({key: value}, callback);
+// findOne will retrieve the carousel associated with the given id
+function findOne(id, callback) {
+  CarouselModel.findOne({"listing_id": id}, callback);
 }
 
 // insertOne inserts a carousel into the db
