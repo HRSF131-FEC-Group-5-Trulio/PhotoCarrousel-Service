@@ -17,7 +17,7 @@ app.get("/api/homes/:id/photos", (req, res) => {
       (err, listing_doc) => {
         if (err) {
           console.log(`Error: failed to find document with listing_id = ${req.params.id}`);
-          res.sendStatus(500);
+          res.sendStatus(404);
         } else {
           console.log("Successful response...");
           res.json(
@@ -27,6 +27,27 @@ app.get("/api/homes/:id/photos", (req, res) => {
       })
     // .photos
     // .map(s3_url => ({url: s3_url}))
+});
+
+app.get("/api/:id/is_favorite", (req, res) => {
+  console.log(`/api/${req.params.id}/is_favorite`);
+  Carousels
+    .findOne(req.params.id,
+      (err, listing_doc) => {
+      if (err) {
+        console.log(`Error: failed to find document with listing_id = ${req.params.id}`);
+        res.sendStatus(404);
+      } else {
+        console.log("Successful response...");
+        res.json(
+          listing_doc.saved
+        )
+      }
+    })
+});
+
+app.post("/api/:id/change_favoredness", (req, res) => {
+  console.log(`/api/${req.params.id}/change_favoredness`);
 });
 
 app.listen(port, (error) => {
