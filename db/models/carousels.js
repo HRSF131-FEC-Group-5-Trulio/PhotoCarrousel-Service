@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/carousels');
 
 const carouselSchema = mongoose.Schema({
-  // listing_id: {
-  //   type: Number,
-  //   unique: true,
-  // },
+  listing_id: Number,
   region: String, // e.g., "CA"
   city: String,
   zipCode: String,
