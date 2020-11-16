@@ -1,9 +1,9 @@
 {
-  "name": "",
+  "name": "PhotoCarrousel-Service",
   "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "description": "FEC",
+  "author": "Thomas Brannan",
+  "license": "n/a",
   "engines": {
     "node": ">=6.13.0"
   },
@@ -11,6 +11,7 @@
     "seed-db": "node scripts/seed-db.js"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "faker": "^5.1.0",
     "mongoose": "^5.10.14"
   },

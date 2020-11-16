@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/carousels');
 
 const carouselSchema = mongoose.Schema({
-  // listing_id: {
-  //   type: Number,
-  //   unique: true,
-  // },
+  listing_id: Number,
   region: String, // e.g., "CA"
   city: String,
   zipCode: String,
@@ -26,9 +23,9 @@ function findAll(callback) {
   CarouselModel.find({}).exec(callback);
 }
 
-// findOne will retrieve the carousel associated with the given key-value
-function findOne(key, value, callback) {
-  CarouselModel.find({key: value}, callback);
+// findOne will retrieve the carousel associated with the given id
+function findOne(id, callback) {
+  CarouselModel.findOne({"listing_id": id}, callback);
 }
 
 // insertOne inserts a carousel into the db
