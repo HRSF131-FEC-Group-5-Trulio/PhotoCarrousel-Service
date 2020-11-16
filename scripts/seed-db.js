@@ -1,32 +1,32 @@
-const mongoose = require('mongoose');
-const faker = require('faker');
-const Photos = require('../db/models/photos.js');
-const fs = require('fs');
-const Path = require('path');
-mongoose.connect('mongodb://localhost/photos');
+const mongoose = require("mongoose");
+const faker = require("faker");
+const fs = require("fs");
+const path = require("path");
 
-/**
- * Add 100 png images to the Photos database
- */
+const Carousel = require("../db/models/carousels.js"); // _bugsuspect: use db/models/carousels.js
+const s3_links = require("../data/S3_Links.js");
+
+mongoose.connect("mongodb://localhost/carousels");
+const db = mongoose.connection;
+
+// create 100 carousels
 var seed = function() {
-  //  For every listing_id from 1 to 100:
-  //    Pick a folder from data/sample_data:
-  //      db.save <--- photo {listing_id, url*, description}
-  //      *the url can be a local filepath. later on, use S3 urls.
-  const samplesPath = "./data/sample_images";
-  const images = fs.readdirSync(samplesPath).map(dir =>
-    fs.readdirSync(Path.join(samplesPath, dir)).map(image => Path.join(samplesPath, dir, image))
-  );
-  for (let listing_id = 1; listing_id <= 100; listing_id++) {
-    const imagePaths = images[listing_id % images.length];
-    imagePaths.forEach(path => {
-      Photos.insertOne({
-        listing_id: listing_id,
-        url: path,
-        description: faker.lorem.sentence(),
-      });
+  for (var i = 1; i <= 100; i++) {
+    let address = Object.keys(s3_links)[i % Object.keys(s3_links).length];
+    Carousel.insertOne({
+      region: "CA", // e.g., "CA"
+      city: faker.fake('{{address.city}}'),
+      zipCode: faker.fake('{{address.zipCode}}'),
+      address: address,
+      price: 6000000,
+      beds: 5,
+      baths: 5,
+      photos: s3_links[address],
+      saved: false,
+      newConstruction: false,
+      quickMoveIn: false,
     });
   }
-}
+};
 
 seed();

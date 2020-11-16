@@ -24,3 +24,5 @@ coverage
 build/
 dist/
 
+# Redundant info
+sample_images
