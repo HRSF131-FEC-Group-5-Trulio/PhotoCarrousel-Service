@@ -3,17 +3,40 @@
  * GET /api/user_favorites --->
  */
 
+// npm packages
 const express = require("express");
 const app = express();
-const port = 3030;
-
+const path = require("path");
+// local files
 const Carousels = require("../db/models/carousels.js");
+const fs = require("fs");
+
+// constants
+const port = 3030;
+const public_clientDir = path.join(__dirname, "../client");
+const public_staticDir = path.join(public_clientDir, "/dist");
+
+app.use('/:id', express.static(public_staticDir));
+
+// app.get("/favicon.ico", (req, res) => {
+//   // todo: confirm: fs aquires favicon.ico ---> callback responds?
+//   res.send()
+// });
+
+/**
+ * _Todo: Agree with @Team on a standard for
+ * identifying listings through the URL?
+ */
+// this endpoint may be unneccessary?
+app.get("/:id", (req, res) => {
+  res.end();
+});
 
 app.get("/api/homes/:id/photos", (req, res) => {
   // res.json(req.params);
-  console.log(`GET /api/homes/${req.params.id}/photos`)
+  console.log(`GET /api/homes/${req.params.id}/photos`);
   Carousels
-    .findOne(req.params.id,
+    ._findOneById(req.params.id,
       (err, listing_doc) => {
         if (err) {
           console.log(`Error: failed to find document with listing_id = ${req.params.id}`);
@@ -22,7 +45,7 @@ app.get("/api/homes/:id/photos", (req, res) => {
           console.log("Successful response...");
           res.json(
             listing_doc.photos.map(s3_url => ({url: s3_url}))
-          )
+          );
         }
       })
     // .photos
@@ -32,22 +55,32 @@ app.get("/api/homes/:id/photos", (req, res) => {
 app.get("/api/:id/is_favorite", (req, res) => {
   console.log(`/api/${req.params.id}/is_favorite`);
   Carousels
-    .findOne(req.params.id,
+    ._findOneById(req.params.id,
       (err, listing_doc) => {
       if (err) {
         console.log(`Error: failed to find document with listing_id = ${req.params.id}`);
         res.sendStatus(404);
       } else {
         console.log("Successful response...");
-        res.json(
-          listing_doc.saved
-        )
+        res.json(listing_doc.saved);
       }
     })
 });
 
 app.post("/api/:id/change_favoredness", (req, res) => {
   console.log(`/api/${req.params.id}/change_favoredness`);
+  Carousels
+    .changeFavoredness(req.params.id, (err, toggled) => {
+      if (err) {
+        console.log(`Error: failed to change favoredness. listing_id = ${req.params.id}`);
+        res.sendStatus(404);
+      } else {
+        console.log("Successful response...");
+        console.log(toggled);
+        res.json(toggled);
+
+      }
+    })
 });
 
 app.listen(port, (error) => {
@@ -57,4 +90,5 @@ app.listen(port, (error) => {
     console.log("PhotoCarrousel-Service express server listening on " + port);
   }
 });
+
 
