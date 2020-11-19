@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const PhotosBoxParent = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 const ColPhotosBox = styled.div`
@@ -14,11 +15,13 @@ const ColPhotosBox = styled.div`
 const BigPhoto = styled.img`
   height: 500px;
   width: 744px;
+  padding: 10px;
 `;
 
 const LilPhoto = styled.img`
   height: 250px;
   width: 248px;
+  padding: 10px;
 `;
 
 class PhotosCarousel extends React.Component {
