@@ -18,20 +18,6 @@ const public_staticDir = path.join(public_clientDir, "/dist");
 
 app.use('/:id', express.static(public_staticDir));
 
-// app.get("/favicon.ico", (req, res) => {
-//   // todo: confirm: fs aquires favicon.ico ---> callback responds?
-//   res.send()
-// });
-
-/**
- * _Todo: Agree with @Team on a standard for
- * identifying listings through the URL?
- */
-// this endpoint may be unneccessary?
-app.get("/:id", (req, res) => {
-  res.end();
-});
-
 app.get("/api/homes/:id/photos", (req, res) => {
   // res.json(req.params);
   console.log(`GET /api/homes/${req.params.id}/photos`);
@@ -48,8 +34,6 @@ app.get("/api/homes/:id/photos", (req, res) => {
           );
         }
       })
-    // .photos
-    // .map(s3_url => ({url: s3_url}))
 });
 
 app.get("/api/:id/is_favorite", (req, res) => {
