@@ -11,6 +11,16 @@ const ColPhotosBox = styled.div`
   flex-direction: column;
 `;
 
+const BigPhoto = styled.img`
+  height: 500px;
+  width: 744px;
+`;
+
+const LilPhoto = styled.img`
+  height: 250px;
+  width: 248px;
+`;
+
 class PhotosCarousel extends React.Component {
 
   constructor(props) {
@@ -37,10 +47,10 @@ class PhotosCarousel extends React.Component {
     return this.state.photos.length
     ? (<div className="photo-carousel">
         <PhotosBoxParent>
-          <img src={this.state.photos[0].url}></img>
+            <BigPhoto src={this.state.photos[0].url}></BigPhoto>
           <ColPhotosBox>
-            <p>Let's put it thru its paces</p>
-            <p>Let's check nesting flexboxes</p>
+            <LilPhoto src={this.state.photos[1].url}></LilPhoto>
+            <LilPhoto src={this.state.photos[2].url}></LilPhoto>
           </ColPhotosBox>
         </PhotosBoxParent>
       </div>)
