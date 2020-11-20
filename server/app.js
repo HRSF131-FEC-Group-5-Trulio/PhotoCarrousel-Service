@@ -33,7 +33,7 @@ app.get("/api/homes/:id/photos", (req, res) => {
             listing_doc.photos.map(s3_url => ({url: s3_url}))
           );
         }
-      })
+      });
 });
 
 app.get("/api/:id/is_favorite", (req, res) => {
