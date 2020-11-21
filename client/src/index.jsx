@@ -14,5 +14,5 @@ let id = Number(window.location.pathname.slice(1, -1)); // _TODO: regex!
 
 ReactDOM.render(
   <App id={id}/>,
-  document.getElementById("app")
+  document.getElementById("app_PhotoCarousel")
 );

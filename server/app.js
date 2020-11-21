@@ -1,8 +1,3 @@
-/**
- * GET /api/homes/:id/photos ---> [{"url":<S3 Link>}]
- * GET /api/user_favorites --->
- */
-
 // npm packages
 const express = require("express");
 const app = express();
@@ -18,9 +13,9 @@ const public_staticDir = path.join(public_clientDir, "/dist");
 
 app.use('/:id', express.static(public_staticDir));
 
-app.get("/api/homes/:id/photos", (req, res) => {
+app.get("/api/:id/photos", (req, res) => {
   // res.json(req.params);
-  console.log(`GET /api/homes/${req.params.id}/photos`);
+  console.log(`GET /api/${req.params.id}/photos`);
   Carousels
     ._findOneById(req.params.id,
       (err, listing_doc) => {
