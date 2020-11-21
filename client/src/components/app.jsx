@@ -16,26 +16,6 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   };
 
-  render() {
-    if (this.state.isLoading) {
-      return (<div><h2>...Loading</h2></div>)
-    }
-    if (!this.state.modalIsVisible) {
-      return (
-        <div onClick={this.handleClick}>
-          <ItemDetailPage photos={this.state.photos}/>
-        </div>
-        );
-    } else {
-      return (
-        <div>
-          <ItemDetailPage photos={this.state.photos}/>
-          <ModalCarousel photos={this.state.photos}/>
-        </div>
-      );
-    }
-  };
-
   componentDidMount() {
     $.ajax({
       method: 'GET',
@@ -45,7 +25,7 @@ class App extends React.Component {
       console.log(photos);
       this.setState({
         isLoading: false,
-        photos,
+        photos: photos,
         modalIsVisible: false,
       })
     }).fail(err => {
@@ -55,11 +35,30 @@ class App extends React.Component {
 
   handleClick() {
     console.log('app.jsx::handleClick()');
-    this.setState({
-      photos: this.state.photos,
-      modalIsVisible: true,
-      isLoading: this.state.isLoading,
-    });
+    this.setState({modalIsVisible: true});
+  };
+
+  render() {
+    if (this.state.isLoading) {
+      return (<div><h2>...Loading</h2></div>)
+    }
+    if (!this.state.modalIsVisible) {
+      return (
+        <div onClick={this.handleClick}>
+          <h1>TESTING 1 2 3 A B C</h1>
+          <ItemDetailPage photos={this.state.photos}/>
+        </div>
+        );
+    } else {
+      return (
+        <div>
+          <ItemDetailPage photos={this.state.photos}>
+          </ItemDetailPage>
+          <ModalCarousel photos={this.state.photos}>
+          </ModalCarousel>
+        </div>
+      );
+    }
   };
 
 }
