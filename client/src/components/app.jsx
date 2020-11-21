@@ -21,13 +21,13 @@ class App extends React.Component {
   componentDidMount() {
     $.ajax({
       method: 'GET',
-      url: `/api/homes/${this.id}/photos`,
+      url: `/api/${this.id}/photos`,
       dataType: 'json',
     }).done(photos => {
       console.log('about to organize photos');
       this.loadedOperations(photos);
     }).fail(err => {
-      console.log('Error: failed ajax GET /api/homes/:id/photos');
+      console.log('Error: failed ajax GET /api/:id/photos');
     });
   };
 
