@@ -13,14 +13,30 @@ const ModalDiv = styled.div`
 `;
 
 const ModalCarousel = (props) => {
+
+  // Repeat, until you've got them all:
+  //   Make 2 Big Photos in a row
+  //   Make 3 Small Photos in a row
+
   return (
-    <ModalDiv>
-      <h1>Modal Rendering</h1>
-      {props.photos.map(photo => (
-        <LilPhoto src={photo.url}></LilPhoto>
-      ))}
-    </ModalDiv>
-  )
+    <h1>Hello from MODAL!</h1>
+    // <ModalDiv>
+    //   <ColPhotosBox>
+    //   {
+
+    //   }
+    //   </ColPhotosBox>
+    // </ModalDiv>
+  );
+
+  // return (
+  //   <ModalDiv>
+  //     <h1>Modal Rendering</h1>
+  //     {props.photos.map(photo => (
+  //       <LilPhoto src={photo.url}></LilPhoto>
+  //     ))}
+  //   </ModalDiv>
+  // )
   // return(
   //   <ModalCarouselContainer>
   //      <PhotosBoxParent>

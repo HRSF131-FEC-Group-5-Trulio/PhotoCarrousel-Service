@@ -10,10 +10,14 @@ class App extends React.Component {
     this.id = props.id;
     this.state = {
       photos: [],
+      trippleRows: [],
+      doubleRows: [],
+      singleRows: [],
       modalIsVisible: false,
       isLoading: true,
     }
     this.handleClick = this.handleClick.bind(this);
+    this.loadedOperations = this.loadedOperations.bind(this);
   };
 
   componentDidMount() {
@@ -22,16 +26,25 @@ class App extends React.Component {
       url: `/api/homes/${this.id}/photos`,
       dataType: 'json',
     }).done(photos => {
-      console.log(photos);
-      this.setState({
-        isLoading: false,
-        photos: photos,
-        modalIsVisible: false,
-      })
+      console.log('about to organize photos');
+      this.loadedOperations(photos);
     }).fail(err => {
       console.log('Error: failed ajax GET /api/homes/:id/photos');
     });
   };
+
+  loadedOperations(photos) {
+    console.log('loadedOperations()...');
+
+    // result array
+    let trippleRows = [];
+    let doubleRows = [];
+    let singleRows = [];
+
+    let n = photos.length;
+
+    this.setState({photos, trippleRows, doubleRows, singleRows, isLoading: false,});
+  }
 
   handleClick() {
     console.log('app.jsx::handleClick()');
@@ -54,7 +67,11 @@ class App extends React.Component {
         <div>
           <ItemDetailPage photos={this.state.photos}>
           </ItemDetailPage>
-          <ModalCarousel photos={this.state.photos}>
+          <ModalCarousel
+            trippleRows={this.state.trippleRows}
+            doubleRows={this.state.doubleRows}
+            singleRows={this.state.singleRows}
+          >
           </ModalCarousel>
         </div>
       );
