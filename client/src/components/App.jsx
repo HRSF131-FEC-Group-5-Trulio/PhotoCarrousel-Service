@@ -14,7 +14,7 @@ class App extends React.Component {
       isLoading: true,
     }
     this.handleClick = this.handleClick.bind(this);
-  }
+  };
 
   render() {
     if (this.state.isLoading) {
@@ -34,7 +34,7 @@ class App extends React.Component {
         </div>
       );
     }
-  }
+  };
 
   componentDidMount() {
     $.ajax({
@@ -60,7 +60,7 @@ class App extends React.Component {
       modalIsVisible: true,
       isLoading: this.state.isLoading,
     });
-  }
+  };
 
 }
 
