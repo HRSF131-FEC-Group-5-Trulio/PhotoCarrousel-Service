@@ -8,7 +8,7 @@ const displayBlock = styled
 const ModalCarousel = (props) => {
   return(
     <ModalCarouselContainer>
-
+      <h1>testing 1 2 3</h1>
     </ModalCarouselContainer>
   );
 };
