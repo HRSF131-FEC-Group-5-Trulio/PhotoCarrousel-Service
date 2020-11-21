@@ -2,6 +2,15 @@ import styled from 'styled-components';
 
 module.exports = {
 
+  ModalCarouselStyle: styled.div`
+    position: absolute;
+    top: 50px;
+    z-index: 5;
+    height: 900px;
+    width: 1560px;
+    background-color: red;
+  `,
+
   ModalCarouselContainer: styled.div`
     box-sizing: border-box;
     position: relative;
@@ -36,14 +45,6 @@ module.exports = {
     padding: 5px;
   `,
 
-  ModalCarouselStyle: styled.div`
-    position: absolute;
-    top: 50px;
-    z-index: 5;
-    height: 900px;
-    width: 1560px;
-    background-color: red;
-  `,
 };
 
 /**

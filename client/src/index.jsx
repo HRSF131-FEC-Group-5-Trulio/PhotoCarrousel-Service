@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // local components
-import PhotosCarousel from './components/PhotosCarousel.jsx';
+import App from './components/App.jsx';
 
 // aquire the listing_id from the url
 console.log(`window.location.pathname = ${window.location.pathname}`);
@@ -13,6 +13,6 @@ console.log(`typeof Number(window.location.pathname.slice(1, -1)) = ${typeof Num
 let id = Number(window.location.pathname.slice(1, -1)); // _TODO: regex!
 
 ReactDOM.render(
-  <PhotosCarousel id={id}/>,
+  <App id={id}/>,
   document.getElementById("app")
 );
