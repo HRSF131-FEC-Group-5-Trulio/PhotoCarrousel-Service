@@ -21,7 +21,7 @@ class App extends React.Component {
   componentDidMount() {
     $.ajax({
       method: 'GET',
-      url: `/api/${this.id}/photos`,
+      url: `/api/PhotoCarousel/${this.id}/photos`,
       dataType: 'json',
     }).done(photos => {
       console.log('about to organize photos');

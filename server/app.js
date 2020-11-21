@@ -13,9 +13,9 @@ const public_staticDir = path.join(public_clientDir, "/dist");
 
 app.use('/:id', express.static(public_staticDir));
 
-app.get("/api/:id/photos", (req, res) => {
+app.get("/api/PhotoCarousel/:id/photos", (req, res) => {
   // res.json(req.params);
-  console.log(`GET /api/${req.params.id}/photos`);
+  console.log(`GET /api/PhotoCarousel/${req.params.id}/photos`);
   Carousels
     ._findOneById(req.params.id,
       (err, listing_doc) => {
@@ -31,8 +31,8 @@ app.get("/api/:id/photos", (req, res) => {
       })
 });
 
-app.get("/api/:id/is_favorite", (req, res) => {
-  console.log(`/api/${req.params.id}/is_favorite`);
+app.get("/api/PhotoCarousel/:id/is_favorite", (req, res) => {
+  console.log(`/api/PhotoCarousel/${req.params.id}/is_favorite`);
   Carousels
     ._findOneById(req.params.id,
       (err, listing_doc) => {
@@ -46,8 +46,8 @@ app.get("/api/:id/is_favorite", (req, res) => {
     })
 });
 
-app.post("/api/:id/change_favoredness", (req, res) => {
-  console.log(`/api/${req.params.id}/change_favoredness`);
+app.post("/api/PhotoCarousel/:id/change_favoredness", (req, res) => {
+  console.log(`/api/PhotoCarousel/${req.params.id}/change_favoredness`);
   Carousels
     .changeFavoredness(req.params.id, (err, toggled) => {
       if (err) {
