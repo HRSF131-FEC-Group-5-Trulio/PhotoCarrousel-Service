@@ -16,6 +16,9 @@ const ModalCarousel = (props) => {
   return (
     <ModalDiv>
       <h1>Modal Rendering</h1>
+      {props.photos.map(photo => (
+        <LilPhoto src={photo.url}></LilPhoto>
+      ))}
     </ModalDiv>
   )
   // return(
