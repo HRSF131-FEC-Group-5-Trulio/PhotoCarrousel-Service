@@ -10,9 +10,7 @@ class App extends React.Component {
     this.id = props.id;
     this.state = {
       photos: [],
-      trippleRows: [],
-      doubleRows: [],
-      singleRows: [],
+      organizedPhotos: [],
       modalIsVisible: false,
       isLoading: true,
     }
@@ -35,15 +33,20 @@ class App extends React.Component {
 
   loadedOperations(photos) {
     console.log('loadedOperations()...');
-
-    // result array
-    let trippleRows = [];
-    let doubleRows = [];
-    let singleRows = [];
-
-    let n = photos.length;
-
-    this.setState({photos, trippleRows, doubleRows, singleRows, isLoading: false,});
+    let organizedPhotos = [];
+    let n = [...photos];
+    while (n.length >= 6) {
+      organizedPhotos.push(n.splice(-3, 3));
+      organizedPhotos.push(n.splice(-2, 2));
+      organizedPhotos.push(n.splice(-1, 1));
+    }
+    while (n.length > 2) {
+      organizedPhotos.push(n.splice(-2, 2));
+    }
+    while (n.length > 0) {
+      organizedPhotos.push(n.splice(-1, 1));
+    }
+    this.setState({photos, organizedPhotos, isLoading: false,});
   }
 
   handleClick() {
@@ -67,11 +70,7 @@ class App extends React.Component {
         <div>
           <ItemDetailPage photos={this.state.photos}>
           </ItemDetailPage>
-          <ModalCarousel
-            trippleRows={this.state.trippleRows}
-            doubleRows={this.state.doubleRows}
-            singleRows={this.state.singleRows}
-          >
+          <ModalCarousel organizedPhotos={this.state.organizedPhotos}>
           </ModalCarousel>
         </div>
       );
