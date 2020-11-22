@@ -14,17 +14,18 @@ var seed = function() {
   for (var i = 1; i <= 100; i++) {
     let address = Object.keys(s3_links)[i % Object.keys(s3_links).length];
     Carousel.insertOne({
+      listing_id: i,
       region: "CA", // e.g., "CA"
       city: faker.fake('{{address.city}}'),
       zipCode: faker.fake('{{address.zipCode}}'),
       address: address,
-      price: 6000000,
-      beds: 5,
-      baths: 5,
+      price: faker.random.number(50000000),
+      beds: faker.random.number(10),
+      baths: faker.random.number(15),
       photos: s3_links[address],
-      saved: false,
-      newConstruction: false,
-      quickMoveIn: false,
+      saved: faker.random.boolean(),
+      newConstruction: faker.random.boolean(),
+      quickMoveIn: faker.random.boolean(),
     });
   }
 };
