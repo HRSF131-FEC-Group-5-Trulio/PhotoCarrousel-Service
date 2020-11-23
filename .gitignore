@@ -25,4 +25,4 @@ build/
 dist/
 
 # Redundant info
-sample_images
+data/Local_Images
