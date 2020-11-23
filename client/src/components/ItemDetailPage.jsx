@@ -1,7 +1,29 @@
 import React from 'react';
 import $ from 'jquery'; // for ajax
 import styled from 'styled-components';
-import {PhotosBoxParent, ColPhotosBox, BigPhoto, LilPhoto} from './styledComponents.jsx';
+
+const PhotosBoxParent = styled.div`
+display: flex;
+justify-content: center;
+`;
+
+const ColPhotosBox = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
+const BigPhoto = styled.img`
+height: 500px;
+width: 744px;
+padding: 10px;
+`;
+
+const LilPhoto = styled.img`
+height: 250px;
+width: 248px;
+padding: 5px;
+`;
+
 
 const ItemDetailPage = (props) => {
   return (

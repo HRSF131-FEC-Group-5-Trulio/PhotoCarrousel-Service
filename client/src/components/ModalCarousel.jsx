@@ -1,7 +1,37 @@
 import React from 'react';
 import $ from 'jquery'; // for ajax
 import styled from 'styled-components';
-import { ModalCarouselStyle, PhotosBoxParent, ColPhotosBox, ModalCarouselContainer } from './styledComponents.jsx'
+
+const PhotosBoxParent = styled.div`
+display: flex;
+justify-content: center;
+`;
+
+const ColPhotosBox = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
+const ModalCarouselStyle = styled.div`
+position: absolute;
+top: 50px;
+z-index: 5;
+height: 900px;
+width: 1560px;
+background-color: red;
+`;
+
+const ModalCarouselContainer = styled.div`
+box-sizing: border-box;
+position: relative;
+display: flex;
+-webkit-box-pack: center;
+justify-content: center;
+height: 500px;
+overflow: hidden;
+max-height: calc(100vh - 275px);
+min-height: 275px;
+`;
 
 const ModalDiv = styled.div`
   z-index: 10;
