@@ -11,7 +11,8 @@ const port = 3001;
 const public_clientDir = path.join(__dirname, "../client");
 const public_staticDir = path.join(public_clientDir, "/dist");
 
-app.use(/*"/:id",*/express.static(public_staticDir));
+app.use(/*"/:id",*/express.static(public_staticDir)); // for proxy
+app.use("/:id", express.static(public_staticDir));
 
 app.get("/api/PhotoCarousel/:id/photos", (req, res) => {
   // res.json(req.params);

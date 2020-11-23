@@ -10,6 +10,7 @@ const ModalDiv = styled.div`
   background-color: red;
   position: absolute;
   top: 50px;
+  overflow-y: auto;
 `;
 
 const TrippleRow = styled.div`

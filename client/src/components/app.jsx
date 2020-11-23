@@ -24,6 +24,7 @@ class App extends React.Component {
       url: `/api/PhotoCarousel/${this.id}/photos`,
       dataType: 'json',
     }).done(photos => {
+      console.log(photos);
       console.log('about to organize photos');
       this.loadedOperations(photos);
     }).fail(err => {
@@ -64,7 +65,7 @@ class App extends React.Component {
           <h1>TESTING 1 2 3 A B C</h1>
           <ItemDetailPage photos={this.state.photos}/>
         </div>
-        );
+      );
     } else {
       return (
         <div>
