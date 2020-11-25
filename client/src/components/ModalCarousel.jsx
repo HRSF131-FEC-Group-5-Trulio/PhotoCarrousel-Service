@@ -89,10 +89,11 @@ function shuffle(a) {
 }
 
 const ModalCarousel = (props) => {
+  console.log('props.photos = ', props.photos);
   // organize photos for jsx
   let trippleRowsPhotos = [];
   // let doubleRowsPhotos = [];
-  // let singleRowPhotos = [];
+  let singleRowPhotos = props.photos.large;
   // make as many tripple rows as the small pics allow for
   let numTrippleRows = Math.floor(props.photos.small.length / 3);
   for (let i = 0; i < numTrippleRows; i++) {
@@ -108,20 +109,29 @@ const ModalCarousel = (props) => {
 
   // assemble the component
   return (
-    // <h1>Hello from MODAL!</h1>
     <ModalDiv>
       <ColPhotosBox>
       {
         // all rows concat --> randomize rows order ---> map over rows, get components
-        shuffle(trippleRowsPhotos.concat(doubleRowsPhotos, singleRowPhotos)).map(row => {
+        shuffle(trippleRowsPhotos.concat(/*doubleRowsPhotos,*/singleRowPhotos)).map(row => {
           if (row.length === 3) {
-            return <TrippleRow row={row}/>
+            return (
+              <TrippleRow>
+                <TrippleRowPhoto src={row[0]}></TrippleRowPhoto>
+                <TrippleRowPhoto src={row[1]}></TrippleRowPhoto>
+                <TrippleRowPhoto src={row[2]}></TrippleRowPhoto>
+              </TrippleRow>
+            )
           }
-          if (row.length === 2) {
-            return <DoubleRow row={row}/>
-          }
+          // if (row.length === 2) {
+          //   return <DoubleRow row={row}/>
+          // }
           if (row.length === 1) {
-            return <SingleRow row={row}/>
+            return (
+              <SingleRow>
+                <SingleRowPhoto src={row}></SingleRowPhoto>
+              </SingleRow>
+            )
           }
         })
       }

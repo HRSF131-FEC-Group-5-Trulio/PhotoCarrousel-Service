@@ -50,7 +50,7 @@ class App extends React.Component {
         <div>
           <ItemDetailPage photos={this.state.photos}>
           </ItemDetailPage>
-          <ModalCarousel organizedPhotos={this.state.organizedPhotos}>
+          <ModalCarousel photos={this.state.photos}>
           </ModalCarousel>
         </div>
       );
