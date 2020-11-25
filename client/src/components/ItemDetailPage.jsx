@@ -10,12 +10,13 @@ const PhotosBoxParent = styled.div`
 const ColPhotosBox = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: top;
 `;
 
 const BigPhoto = styled.img`
-  height: 500px;
+  height: 510px;
   width: 744px;
-  padding: 10px;
+  padding: 5px;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
 `;
