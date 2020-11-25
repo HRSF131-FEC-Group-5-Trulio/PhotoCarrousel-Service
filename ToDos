@@ -10,5 +10,5 @@ Output: modal
 
 flexbox: 2 rows: header (addr | price | bed/bath) & photos (rows of single and tripple)
 
-photos is a flexbox: recieves combined array, map images to image component
+photos is a flexbox: recieves combined array, map images to one of two image components, based on length.
 
