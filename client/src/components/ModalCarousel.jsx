@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const ModalDiv = styled.div`
   z-index: 10;
-  height: 900px;
-  width: 1560px;
+  height: 90%;
+  width: 90%;
   background-color: grey;
   position: absolute;
   top: 50px;
@@ -14,8 +14,8 @@ const ModalDiv = styled.div`
 const ColPhotosBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1255px;
-  height: 800px;
+  width: 85%;
+  height: 85%;
   overflow-y: auto;
 `;
 
@@ -25,18 +25,22 @@ const TrippleRow = styled.div`
 `;
 
 const SmallPhoto = styled.img`
-  width: 410px;
-  height: 290px;
+  width: 330px;
+  height: 230px;
+  padding: 5px;
 `;
 
 const SingleRow = styled.div`
   display: flex;
   flex-direction: row;
+  width: 100%
+  height: 100%
 `;
 
 const LargePhoto = styled.img`
-  width: 1466px;
-  height: 686;
+  width: 988px;
+  height: 560px;
+  padding: 5px;
 `;
 
 /**
