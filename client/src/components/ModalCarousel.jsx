@@ -2,44 +2,20 @@ import React from 'react';
 import $ from 'jquery'; // for ajax
 import styled from 'styled-components';
 
-const PhotosBoxParent = styled.div`
-display: flex;
-justify-content: center;
-`;
-
-const ColPhotosBox = styled.div`
-display: flex;
-flex-direction: column;
-`;
-
-const ModalCarouselStyle = styled.div`
-position: absolute;
-top: 50px;
-z-index: 5;
-height: 900px;
-width: 1560px;
-background-color: red;
-`;
-
-const ModalCarouselContainer = styled.div`
-box-sizing: border-box;
-position: relative;
-display: flex;
--webkit-box-pack: center;
-justify-content: center;
-height: 500px;
-overflow: hidden;
-max-height: calc(100vh - 275px);
-min-height: 275px;
-`;
-
 const ModalDiv = styled.div`
   z-index: 10;
   height: 900px;
   width: 1560px;
-  background-color: red;
+  background-color: grey;
   position: absolute;
   top: 50px;
+`;
+
+const ColPhotosBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 1255px;
+  height: 800px;
   overflow-y: auto;
 `;
 
@@ -48,9 +24,9 @@ const TrippleRow = styled.div`
   flex-direction: row;
 `;
 
-const DoubleRow = styled.div`
-  display: flex;
-  flex-direction: row;
+const SmallPhoto = styled.img`
+  width: 410px;
+  height: 290px;
 `;
 
 const SingleRow = styled.div`
@@ -58,19 +34,9 @@ const SingleRow = styled.div`
   flex-direction: row;
 `;
 
-const TrippleRowPhoto = styled.img`
-  width: 730px;
-  height: 490px;
-`;
-
-const DoubleRowPhoto = styled.img`
-  width: 485px;
-  height: 370px;
-`;
-
-const SingleRowPhoto = styled.img`
-  width: 1470px;
-  height: 690px;
+const LargePhoto = styled.img`
+  width: 1466px;
+  height: 686;
 `;
 
 /**
@@ -88,48 +54,44 @@ function shuffle(a) {
   return a;
 }
 
+/**
+ * @param {Object} photos, {small: [strings], large: [strings]}
+ * @returns {Object} rows, {trippleRows: [[strings]], singleRows: [strings]}
+ */
+const getRows = (photos) => {
+  let rows = {};
+  rows.tripplets = [];
+  rows.singlets = photos.large; // _ToDo: split photos.large into doublets + singlets
+  let numTripplets = Math.floor(photos.small.length / 3);
+  for (let i = 0; i < numTripplets; i++) {
+    rows.tripplets.push(photos.small.slice(i * 3, (i * 3 + 3)));
+  }
+  return rows;
+}
+
 const ModalCarousel = (props) => {
   console.log('props.photos = ', props.photos);
-  // organize photos for jsx
-  let trippleRowsPhotos = [];
-  // let doubleRowsPhotos = [];
-  let singleRowPhotos = props.photos.large;
-  // make as many tripple rows as the small pics allow for
-  let numTrippleRows = Math.floor(props.photos.small.length / 3);
-  for (let i = 0; i < numTrippleRows; i++) {
-    trippleRowsPhotos.push(props.photos.small.slice(i * 3, (i * 3 + 3)));
-  }
-  console.log(trippleRowsPhotos);
-  // // sort the big pics 50-50 between double and tripple rows
-  // // let numSingleRows = Math.ceil(props.photos.large.length / 2);
-  // let numDoubleRows = Math.floor(props.photos.large.length / 2);
-  // for (let i = 0; i < numDoubleRows; i+=2) {
-  //   doubleRowsPhotos.push(props.photos.large.slice(i, i + 2));
-  // }
+  let rows = getRows(props.photos);
+  console.log(rows);
 
-  // assemble the component
   return (
     <ModalDiv>
       <ColPhotosBox>
-      {
+      { // Images...
         // all rows concat --> randomize rows order ---> map over rows, get components
-        shuffle(trippleRowsPhotos.concat(/*doubleRowsPhotos,*/singleRowPhotos)).map(row => {
+        shuffle(rows.tripplets.concat(/*doubleRowsPhotos,*/rows.singlets)).map(row => {
           if (row.length === 3) {
             return (
               <TrippleRow>
-                <TrippleRowPhoto src={row[0]}></TrippleRowPhoto>
-                <TrippleRowPhoto src={row[1]}></TrippleRowPhoto>
-                <TrippleRowPhoto src={row[2]}></TrippleRowPhoto>
+                <SmallPhoto src={row[0]}></SmallPhoto>
+                <SmallPhoto src={row[1]}></SmallPhoto>
+                <SmallPhoto src={row[2]}></SmallPhoto>
               </TrippleRow>
             )
-          }
-          // if (row.length === 2) {
-          //   return <DoubleRow row={row}/>
-          // }
-          if (row.length === 1) {
+          } else {
             return (
               <SingleRow>
-                <SingleRowPhoto src={row}></SingleRowPhoto>
+                <LargePhoto src={row}></LargePhoto>
               </SingleRow>
             )
           }
@@ -139,5 +101,43 @@ const ModalCarousel = (props) => {
     </ModalDiv>
   );
 };
+
+
+// const ModalCarousel = (props) => {
+//   console.log('props.photos = ', props.photos);
+//   let rows = getRows(props.photos);
+//   console.log(rows);
+
+//   return (
+//     <ModalDiv>
+//       <ColPhotosBox>
+//       {
+//         // all rows concat --> randomize rows order ---> map over rows, get components
+//         shuffle(rows.tripplets.concat(/*doubleRowsPhotos,*/rows.singlets)).map(row => {
+//           if (row.length === 3) {
+//             return (
+//               <TrippleRow>
+//                 <TrippleRowPhoto src={row[0]}></TrippleRowPhoto>
+//                 <TrippleRowPhoto src={row[1]}></TrippleRowPhoto>
+//                 <TrippleRowPhoto src={row[2]}></TrippleRowPhoto>
+//               </TrippleRow>
+//             )
+//           }
+//           // if (row.length === 2) {
+//           //   return <DoubleRow row={row}/>
+//           // }
+//           if (row.length === 1) {
+//             return (
+//               <SingleRow>
+//                 <SingleRowPhoto src={row}></SingleRowPhoto>
+//               </SingleRow>
+//             )
+//           }
+//         })
+//       }
+//       </ColPhotosBox>
+//     </ModalDiv>
+//   );
+// };
 
 export default ModalCarousel;
