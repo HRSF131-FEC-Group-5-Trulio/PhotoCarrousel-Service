@@ -24,14 +24,13 @@ width: 248px;
 padding: 5px;
 `;
 
-
 const ItemDetailPage = (props) => {
   return (
     <PhotosBoxParent>
-      <BigPhoto src={props.photos[0].url}></BigPhoto>
+      <BigPhoto src={props.photos.large[0]}></BigPhoto>
       <ColPhotosBox>
-        <LilPhoto src={props.photos[1].url}></LilPhoto>
-        <LilPhoto src={props.photos[2].url}></LilPhoto>
+        <LilPhoto src={props.photos.small[0]}></LilPhoto>
+        <LilPhoto src={props.photos.small[1]}></LilPhoto>
       </ColPhotosBox>
     </PhotosBoxParent>
   );

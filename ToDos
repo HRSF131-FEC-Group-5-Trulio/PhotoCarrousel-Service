@@ -1,0 +1,14 @@
+Input: photos object {
+  small: double nested [[3 strings], [3 strings]],
+  large: single nested [strings]
+}
+
+combine small and large arrays
+[[3 strings], [3 strings]] + [strings] --> [[3 strings], string, [3 strings]]
+
+Output: modal
+
+flexbox: 2 rows: header (addr | price | bed/bath) & photos (rows of single and tripple)
+
+photos is a flexbox: recieves combined array, map images to image component
+

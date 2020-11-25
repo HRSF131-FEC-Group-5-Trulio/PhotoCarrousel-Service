@@ -26,7 +26,7 @@ app.get("/api/PhotoCarousel/:id/photos", (req, res) => {
         } else {
           console.log("Successful response...");
           res.json(
-            listing_doc.photos.map(s3_url => ({url: s3_url}))
+            listing_doc.photos/*.map(s3_url => ({url: s3_url}))*/
           );
         }
       })

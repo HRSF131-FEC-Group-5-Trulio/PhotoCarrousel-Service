@@ -10,7 +10,7 @@ const carouselSchema = mongoose.Schema({
   price: Number,
   beds: Number,
   baths: Number,
-  photos: Array, // s3 urls
+  photos: Object, // {large: [strings], small: [strings]}
   saved: Boolean, // should be in user schema
   newConstruction: Boolean,
   quickMoveIn: Boolean,

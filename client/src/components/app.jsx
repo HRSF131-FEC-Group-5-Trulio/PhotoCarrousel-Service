@@ -10,12 +10,10 @@ class App extends React.Component {
     this.id = props.id;
     this.state = {
       photos: [],
-      organizedPhotos: [],
       modalIsVisible: false,
       isLoading: true,
     }
     this.handleClick = this.handleClick.bind(this);
-    this.loadedOperations = this.loadedOperations.bind(this);
   };
 
   componentDidMount() {
@@ -24,31 +22,12 @@ class App extends React.Component {
       url: `/api/PhotoCarousel/${this.id}/photos`,
       dataType: 'json',
     }).done(photos => {
-      console.log(photos);
-      console.log('about to organize photos');
-      this.loadedOperations(photos);
+      console.log(Array.isArray(photos));
+      this.setState({photos, isLoading: false,});
     }).fail(err => {
       console.log('Error: failed ajax GET /api/:id/photos');
     });
   };
-
-  loadedOperations(photos) {
-    console.log('loadedOperations()...');
-    let organizedPhotos = [];
-    let n = [...photos];
-    while (n.length >= 6) {
-      organizedPhotos.push(n.splice(-3, 3));
-      organizedPhotos.push(n.splice(-2, 2));
-      organizedPhotos.push(n.splice(-1, 1));
-    }
-    while (n.length > 2) {
-      organizedPhotos.push(n.splice(-2, 2));
-    }
-    while (n.length > 0) {
-      organizedPhotos.push(n.splice(-1, 1));
-    }
-    this.setState({photos, organizedPhotos, isLoading: false,});
-  }
 
   handleClick() {
     console.log('app.jsx::handleClick()');

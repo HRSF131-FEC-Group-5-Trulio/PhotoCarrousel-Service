@@ -73,38 +73,56 @@ const SingleRowPhoto = styled.img`
   height: 690px;
 `;
 
+/**
+ * Shuffles array in place.
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle(a) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+  }
+  return a;
+}
 
 const ModalCarousel = (props) => {
+  // organize photos for jsx
+  let trippleRowsPhotos = [];
+  // let doubleRowsPhotos = [];
+  // let singleRowPhotos = [];
+  // make as many tripple rows as the small pics allow for
+  let numTrippleRows = Math.floor(props.photos.small.length / 3);
+  for (let i = 0; i < numTrippleRows; i++) {
+    trippleRowsPhotos.push(props.photos.small.slice(i * 3, (i * 3 + 3)));
+  }
+  console.log(trippleRowsPhotos);
+  // // sort the big pics 50-50 between double and tripple rows
+  // // let numSingleRows = Math.ceil(props.photos.large.length / 2);
+  // let numDoubleRows = Math.floor(props.photos.large.length / 2);
+  // for (let i = 0; i < numDoubleRows; i+=2) {
+  //   doubleRowsPhotos.push(props.photos.large.slice(i, i + 2));
+  // }
+
+  // assemble the component
   return (
     // <h1>Hello from MODAL!</h1>
     <ModalDiv>
       <ColPhotosBox>
       {
-        props.organizedPhotos.map(row => {
-          let res = null;
+        // all rows concat --> randomize rows order ---> map over rows, get components
+        shuffle(trippleRowsPhotos.concat(doubleRowsPhotos, singleRowPhotos)).map(row => {
           if (row.length === 3) {
-            res = (
-              <TrippleRow>
-                <TrippleRowPhoto src={row[0].url}></TrippleRowPhoto>
-                <TrippleRowPhoto src={row[1].url}></TrippleRowPhoto>
-                <TrippleRowPhoto src={row[2].url}></TrippleRowPhoto>
-              </TrippleRow>
-            )
-          } else if (row.length === 2) {
-            res = (
-              <DoubleRow>
-                <DoubleRowPhoto src={row[0].url}></DoubleRowPhoto>
-                <DoubleRowPhoto src={row[1].url}></DoubleRowPhoto>
-              </DoubleRow>
-            )
-          } else {
-            res = (
-                <SingleRow>
-                  <SingleRowPhoto src={row[0].url}></SingleRowPhoto>
-                </SingleRow>
-              )
+            return <TrippleRow row={row}/>
           }
-          return res;
+          if (row.length === 2) {
+            return <DoubleRow row={row}/>
+          }
+          if (row.length === 1) {
+            return <SingleRow row={row}/>
+          }
         })
       }
       </ColPhotosBox>
@@ -113,4 +131,3 @@ const ModalCarousel = (props) => {
 };
 
 export default ModalCarousel;
-
