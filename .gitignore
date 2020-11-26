@@ -22,5 +22,8 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-dist/
 
+# Redundant info
+data/Local_Images
+data/from_lilian.zip
+data/from_lilian
