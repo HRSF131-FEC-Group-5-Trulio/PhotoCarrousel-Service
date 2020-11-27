@@ -35,6 +35,85 @@ const NavBar = styled.div`
   padding: 8px 8px 0px;
   border-bottom: 1px solid rgb(233, 233, 234);
   display: flex;
+  flex-direction: row;
+  color: rgb(59, 65, 68);
+  // height: calc(100% - 96px);
+  height: 6%;
+  width: 100%;
+`;
+
+const NavBarTabs = styled.div`
+  color: rgb(59, 65, 68);
+  display: flex;
+  flex-direction: row;
+`;
+
+const NavBarSocial = styled(NavBarTabs)`
+  margin-left: auto;
+`;
+
+const NavBarIcon = styled.div`
+  // float: left;
+  padding: 3px;
+  align-items: left;
+  margin-right: 8px;
+`;
+
+const LikeIcon = styled(NavBarIcon)`
+  height: 20px;
+  width: 20px;
+`;
+
+const ShareIcon = styled(NavBarIcon)`
+  height: 30px;
+  width: 30px;
+  margin-top: -5px;
+  // line-height: -100px;
+`;
+
+const NavBarTabItem = styled.div`
+  // transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
+`;
+
+const NavBarButton = styled.button`
+  height: 80%;
+  background-color: transparent;
+  color: rgb(59, 65, 68);
+  font-weight: 575;
+  border-width: 1px;
+  border-style: none;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  white-space: nowrap; // what's this?
+  font-size: 16px;
+  // line-height: 1.5; // this made text noncentered in buttons
+  padding: 8px 16px;
+  outline: none;
+  border-radius: 8px;
+  // display: inline-block;
+  // display: flex;
+  // flex-direction: row;
+`;
+
+const NavBarButtonText = styled.div`
+  line-height: 30px;
+`;
+
+const NavBarButtonSocial = styled(NavBarButton)`
+  border-style: solid;
+  border-color: rgba(59, 65, 68, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 20px;
+`;
+
+const NavBarButtonActive = styled(NavBarButton)`
+  color: rgb(0, 120, 130);
+  border-style: solid;
+  border-color: rgba(59, 65, 68, 0.2);
+  box-shadow: rgba(59, 65, 68, 0.4) 0px 8px 20px -15px;
 `;
 
 // ---> Layout GalleryHeader, GridGallery, ScheduleTour
@@ -63,7 +142,7 @@ const GridGallery = styled.div`
   height: 100%;
   position: relative;
   border-radius: 8px;
-  margin: 0px 8pxl;
+  margin: 0px 8px;
   // border: solid;
   overflow-y: auto;
 `;
@@ -74,6 +153,8 @@ const GalleryContent = styled.div`
   overflow-y: auto;
   border: solid;
   // position: absolute;
+  border-radius: 25px;
+  height: calc(100% - 81px);
 `;
 
 const TrippleRow = styled.div`
@@ -93,7 +174,7 @@ const SingleRow = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%
-  height: 100%
+  // height: 100%
 `;
 
 const LargePhoto = styled.img`
@@ -105,7 +186,6 @@ const LargePhoto = styled.img`
 const ModalCarousel = (props) => {
   let rows = getRows(props.listing.photos);
   console.log(rows);
-
   return (
     // <ModalContainer>
     //   <h1>From ModalContainer</h1>
@@ -119,7 +199,37 @@ const ModalCarousel = (props) => {
     <ModalContainer>
       <Modal>
         <NavBar>
-          <h2>From NavBar</h2>
+          <NavBarTabs>
+            <NavBarTabItem><NavBarButtonActive>Photos</NavBarButtonActive></NavBarTabItem>
+            <NavBarTabItem><NavBarButton>Map</NavBarButton></NavBarTabItem>
+            <NavBarTabItem><NavBarButton>Street View</NavBarButton></NavBarTabItem>
+            <NavBarTabItem><NavBarButton>Schools</NavBarButton></NavBarTabItem>
+            <NavBarTabItem><NavBarButton>Crime</NavBarButton></NavBarTabItem>
+            <NavBarTabItem><NavBarButton>Commute</NavBarButton></NavBarTabItem>
+            <NavBarTabItem><NavBarButton>Shop & Eat</NavBarButton></NavBarTabItem>
+          </NavBarTabs>
+          <NavBarSocial>
+            <NavBarTabItem>
+              <NavBarButtonSocial>
+                <LikeIcon>
+                  <img src="./icons/like.svg"></img>
+                </LikeIcon>
+                <NavBarButtonText>
+                  Save
+                </NavBarButtonText>
+              </NavBarButtonSocial>
+            </NavBarTabItem>
+            <NavBarTabItem>
+              <NavBarButtonSocial>
+                <ShareIcon>
+                  <img src="./icons/share.svg"></img>
+                </ShareIcon>
+                <NavBarButtonText>
+                  Share
+                </NavBarButtonText>
+              </NavBarButtonSocial>
+            </NavBarTabItem>
+          </NavBarSocial>
         </NavBar>
         <LocalInfoBox>
           <GalleryHeader>
