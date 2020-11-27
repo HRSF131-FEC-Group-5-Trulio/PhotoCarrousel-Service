@@ -103,8 +103,7 @@ const LargePhoto = styled.img`
 `;
 
 const ModalCarousel = (props) => {
-  console.log('props.photos = ', props.photos);
-  let rows = getRows(props.photos);
+  let rows = getRows(props.listing.photos);
   console.log(rows);
 
   return (

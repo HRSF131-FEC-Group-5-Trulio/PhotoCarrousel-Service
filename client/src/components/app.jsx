@@ -11,16 +11,7 @@ class App extends React.Component {
     this.state = {
       modalIsVisible: false,
       isLoading: true,
-      region: null,
-      zipCode: null,
-      address: null,
-      price: null,
-      beds: null,
-      baths: null,
-      photos: [],
-      saved: null,
-      newConstruction: null,
-      quickMoveIn: null,
+      listing: null,
     }
     this.handleClick = this.handleClick.bind(this);
   };
@@ -34,6 +25,7 @@ class App extends React.Component {
       console.log(listing);
       this.setState({
         isLoading: false,
+        listing: listing,
         photos: listing.photos,
         region: listing.region,
         zipCode: listing.zipCode,
@@ -82,9 +74,9 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <ItemDetailPage photos={this.state.photos}>
+          <ItemDetailPage photos={this.state.listing.photos}>
           </ItemDetailPage>
-          <ModalCarousel photos={this.state.photos}>
+          <ModalCarousel listing={this.state.listing}>
           </ModalCarousel>
         </div>
       );
