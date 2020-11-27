@@ -24,6 +24,8 @@ const Modal = styled.div`
   // margin: 48px; // bad effect only?
   border-radius: 8px; // space between pics
   // transform: translate3d(0px, 0px, 0px); // _NoEffect?
+  height: 90%;
+  overflow-y: hidden;
 `;
 
 // _ToDo:
@@ -32,32 +34,46 @@ const Modal = styled.div`
 const NavBar = styled.div`
   padding: 8px 8px 0px;
   border-bottom: 1px solid rgb(233, 233, 234);
+  display: flex;
 `;
 
 // ---> Layout GalleryHeader, GridGallery, ScheduleTour
 const LocalInfoBox = styled.div`
   flex: 1 1 0%;
   position: relative;
-  flex-direction: column;
-  overflow: visible;
-  // overflow-y: auto;
+  flex-direction: row;
+  height: 93%;
+`;
+
+const ScheduleTour = styled.div`
+  width: 21%;
+  background-color: blue;
 `;
 
 // --> $address | $price | $beds $baths
 const GalleryHeader = styled.div`
-
+  color: red;
+  background-color: blue;
 `;
 
 const GridGallery = styled.div`
-  // display: flex;
-  // flex-direction: column;
+  display: flex;
+  flex-direction: column;
   width: calc(100% - 358px);
   height: 100%;
-  // overflow-y: auto;
   position: relative;
   border-radius: 8px;
-  margin: 0px 8pxl
-  // overflow-y: auto;
+  margin: 0px 8pxl;
+  // border: solid;
+  overflow-y: auto;
+`;
+
+const GalleryContent = styled.div`
+  // display: flex;
+  // flex-direction: column;
+  overflow-y: auto;
+  border: solid;
+  // position: absolute;
 `;
 
 const TrippleRow = styled.div`
@@ -81,10 +97,67 @@ const SingleRow = styled.div`
 `;
 
 const LargePhoto = styled.img`
-  width: 988px;
-  height: 560px;
+  width: 100%;
+  // height: 560px;
   padding: 5px;
 `;
+
+const ModalCarousel = (props) => {
+  console.log('props.photos = ', props.photos);
+  let rows = getRows(props.photos);
+  console.log(rows);
+
+  return (
+    // <ModalContainer>
+    //   <h1>From ModalContainer</h1>
+    //   <Modal>
+    //     <h1>From Modal</h1>
+    //     <NavBar>
+    //       <h1>From NavBar</h1>
+    //     </NavBar>
+    //   </Modal>
+    // </ModalContainer>
+    <ModalContainer>
+      <Modal>
+        <NavBar>
+          <h2>From NavBar</h2>
+        </NavBar>
+        <LocalInfoBox>
+          <GalleryHeader>
+            <h2>From GalleryHeader</h2>
+          </GalleryHeader>
+          <GridGallery>
+            <GalleryContent>
+              { // Images...
+                // all rows concat --> randomize rows order ---> map over rows, get components
+                shuffle(rows.tripplets.concat(/*doubleRowsPhotos,*/rows.singlets)).map(row => {
+                  if (row.length === 3) {
+                    return (
+                      <TrippleRow>
+                        <SmallPhoto src={row[0]}></SmallPhoto>
+                        <SmallPhoto src={row[1]}></SmallPhoto>
+                        <SmallPhoto src={row[2]}></SmallPhoto>
+                      </TrippleRow>
+                    )
+                  } else {
+                    return (
+                      <SingleRow>
+                        <LargePhoto src={row}></LargePhoto>
+                      </SingleRow>
+                    )
+                  }
+                })
+              }
+            </GalleryContent>
+          </GridGallery>
+          <ScheduleTour>
+            <h1>From ScheduleTour</h1>
+          </ScheduleTour>
+        </LocalInfoBox>
+      </Modal>
+    </ModalContainer>
+  );
+};
 
 /**
  * Shuffles array in place.
@@ -116,55 +189,7 @@ const getRows = (photos) => {
   return rows;
 }
 
-const ModalCarousel = (props) => {
-  console.log('props.photos = ', props.photos);
-  let rows = getRows(props.photos);
-  console.log(rows);
-
-  return (
-    // <ModalContainer>
-    //   <h1>From ModalContainer</h1>
-    //   <Modal>
-    //     <h1>From Modal</h1>
-    //     <NavBar>
-    //       <h1>From NavBar</h1>
-    //     </NavBar>
-    //   </Modal>
-    // </ModalContainer>
-    <ModalContainer>
-      <Modal>
-        <NavBar>
-          <h2>From NavBar</h2>
-        </NavBar>
-        <LocalInfoBox>
-          <GridGallery>
-          { // Images...
-            // all rows concat --> randomize rows order ---> map over rows, get components
-            shuffle(rows.tripplets.concat(/*doubleRowsPhotos,*/rows.singlets)).map(row => {
-              if (row.length === 3) {
-                return (
-                  <TrippleRow>
-                    <SmallPhoto src={row[0]}></SmallPhoto>
-                    <SmallPhoto src={row[1]}></SmallPhoto>
-                    <SmallPhoto src={row[2]}></SmallPhoto>
-                  </TrippleRow>
-                )
-              } else {
-                return (
-                  <SingleRow>
-                    <LargePhoto src={row}></LargePhoto>
-                  </SingleRow>
-                )
-              }
-            })
-          }
-          </GridGallery>
-        </LocalInfoBox>
-      </Modal>
-    </ModalContainer>
-  );
-};
-
+export default ModalCarousel;
 
 // const ModalCarousel = (props) => {
 //   console.log('props.photos = ', props.photos);
@@ -203,4 +228,3 @@ const ModalCarousel = (props) => {
 //   );
 // };
 
-export default ModalCarousel;
