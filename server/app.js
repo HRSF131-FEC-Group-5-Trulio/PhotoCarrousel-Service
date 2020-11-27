@@ -32,6 +32,21 @@ app.get("/api/PhotoCarousel/:id/photos", (req, res) => {
       })
 });
 
+app.get("/api/PhotoCarousel/:id/everything", (req, res) => {
+  console.log(`/api/PhotoCarousel/${req.params.id}/everything`);
+  Carousels
+  ._findOneById(req.params.id,
+    (err, listing_doc) => {
+    if (err) {
+      console.log(`Error: failed to find document with listing_id = ${req.params.id}`);
+      res.sendStatus(404);
+    } else {
+      console.log("Successful response...");
+      res.json(listing_doc);
+    }
+  })
+});
+
 app.get("/api/PhotoCarousel/:id/is_favorite", (req, res) => {
   console.log(`/api/PhotoCarousel/${req.params.id}/is_favorite`);
   Carousels

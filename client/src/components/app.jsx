@@ -9,9 +9,18 @@ class App extends React.Component {
     super(props);
     this.id = props.id;
     this.state = {
-      photos: [],
       modalIsVisible: false,
       isLoading: true,
+      region: null,
+      zipCode: null,
+      address: null,
+      price: null,
+      beds: null,
+      baths: null,
+      photos: [],
+      saved: null,
+      newConstruction: null,
+      quickMoveIn: null,
     }
     this.handleClick = this.handleClick.bind(this);
   };
@@ -19,15 +28,40 @@ class App extends React.Component {
   componentDidMount() {
     $.ajax({
       method: 'GET',
-      url: `/api/PhotoCarousel/${this.id}/photos`,
+      url: `/api/PhotoCarousel/${this.id}/everything`,
       dataType: 'json',
-    }).done(photos => {
-      console.log(Array.isArray(photos));
-      this.setState({photos, isLoading: false,});
+    }).done(listing => {
+      console.log(listing);
+      this.setState({
+        isLoading: false,
+        photos: listing.photos,
+        region: listing.region,
+        zipCode: listing.zipCode,
+        address: listing.address,
+        price: listing.price,
+        beds: listing.beds,
+        baths: listing.baths,
+        saved: listing.saved,
+        newConstruction: listing.newConstruction,
+        quickMoveIn: listing.quickMoveIn,
+      });
     }).fail(err => {
-      console.log('Error: failed ajax GET /api/:id/photos');
+      console.log('Error: failed ajax GET /api/:id/everything');
     });
   };
+
+  // componentDidMount() {
+  //   $.ajax({
+  //     method: 'GET',
+  //     url: `/api/PhotoCarousel/${this.id}/photos`,
+  //     dataType: 'json',
+  //   }).done(photos => {
+  //     console.log(Array.isArray(photos));
+  //     this.setState({photos, isLoading: false,});
+  //   }).fail(err => {
+  //     console.log('Error: failed ajax GET /api/:id/photos');
+  //   });
+  // };
 
   handleClick() {
     console.log('app.jsx::handleClick()');
