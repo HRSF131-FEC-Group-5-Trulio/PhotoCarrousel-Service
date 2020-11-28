@@ -160,6 +160,8 @@ const GalleryHeader = styled.div`
   line-height: 43px;
   margin-left: 15px;
   color: rgb(59, 65, 68);
+  // font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+  // letter-spacing: 1px;
 `;
 
 const Bar = styled.span`
@@ -215,6 +217,10 @@ const LargePhoto = styled.img`
   padding: 5px;
 `;
 
+const stifleChildClick = (e) => {
+  e.stopPropagation();
+}
+
 const ModalCarousel = (props) => {
   let rows = getRows(props.listing.photos);
   console.log(rows);
@@ -229,7 +235,7 @@ const ModalCarousel = (props) => {
     //   </Modal>
     // </ModalContainer>
     <ModalContainer onClick={props.closeModal}>
-      <Modal>
+      <Modal onClick={stifleChildClick}>
         <NavBar>
           <NavBarTabs>
             <NavBarTabItem><NavBarButtonActive>Photos</NavBarButtonActive></NavBarTabItem>
