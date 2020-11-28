@@ -16,6 +16,10 @@ const PhotosBoxParent = styled.div`
   position: relative;
   border: solid;
   width: 55%;
+  overflow: hidden;
+  &:hover {
+    transform: scale(1.5);
+  }
 `;
 
 const ColPhotosBox = styled.div`
