@@ -54,5 +54,11 @@ const sampleListing = {
 test('shallow renders App component', () => {
   const wrapper = shallow(<div><App /></div>);
   expect(wrapper.find(App)).toHaveLength(1);
-})
+});
+
+test('given an :id prop, shallow renders App component', () => {
+  const wrapper = shallow(<div><App id={22}/></div>);
+  expect(wrapper.find(App)).toHaveLength(1);
+});
+
 
