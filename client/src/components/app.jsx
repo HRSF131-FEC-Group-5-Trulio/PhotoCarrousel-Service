@@ -9,23 +9,27 @@ class App extends React.Component {
     super(props);
     this.id = props.id;
     this.state = {
-      photos: [],
       modalIsVisible: false,
       isLoading: true,
+      listing: null,
     }
     this.handleClick = this.handleClick.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   };
 
   componentDidMount() {
     $.ajax({
       method: 'GET',
-      url: `/api/PhotoCarousel/${this.id}/photos`,
+      url: `/api/PhotoCarousel/${this.id}/everything`,
       dataType: 'json',
-    }).done(photos => {
-      console.log(Array.isArray(photos));
-      this.setState({photos, isLoading: false,});
+    }).done(listing => {
+      console.log(listing);
+      this.setState({
+        isLoading: false,
+        listing: listing,
+      });
     }).fail(err => {
-      console.log('Error: failed ajax GET /api/:id/photos');
+      console.log('Error: failed ajax GET /api/:id/everything');
     });
   };
 
@@ -34,23 +38,27 @@ class App extends React.Component {
     this.setState({modalIsVisible: true});
   };
 
+  closeModal() {
+    console.log("app.jsx::closeModal()");
+    this.setState({modalIsVisible: false});
+  }
+
   render() {
     if (this.state.isLoading) {
       return (<div><h2>...Loading</h2></div>)
     }
     if (!this.state.modalIsVisible) {
       return (
-        <div onClick={this.handleClick}>
-          <h1>TESTING 1 2 3 A B C</h1>
-          <ItemDetailPage photos={this.state.photos}/>
+        <div style={{"font":"Helvetica"}} onClick={this.handleClick}>
+          <ItemDetailPage photos={this.state.listing.photos}/>
         </div>
       );
     } else {
       return (
-        <div>
-          <ItemDetailPage photos={this.state.photos}>
+        <div style={{"font":"Helvetica"}}>
+          <ItemDetailPage photos={this.state.listing.photos}>
           </ItemDetailPage>
-          <ModalCarousel photos={this.state.photos}>
+          <ModalCarousel listing={this.state.listing} closeModal={this.closeModal}>
           </ModalCarousel>
         </div>
       );
