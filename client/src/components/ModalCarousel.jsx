@@ -75,6 +75,10 @@ const ShareIcon = styled(NavBarIcon)`
 const CloseIcon = styled(NavBarIcon)`
   height: 25px;
   width: 25px;
+  &:hover { // _TODO: X should turn green on hover!
+    background-color: black;
+    fill: white;
+  }
 `;
 
 const NavBarTabItem = styled.div`
@@ -100,6 +104,9 @@ const NavBarButton = styled.button`
   // display: inline-block;
   // display: flex;
   // flex-direction: row;
+  &:hover {
+    background-color: rgb(235, 235, 235);
+  }
 `;
 
 const NavBarButtonText = styled.div`
@@ -121,6 +128,12 @@ const NavBarButtonActive = styled(NavBarButton)`
   border-style: solid;
   border-color: rgba(59, 65, 68, 0.2);
   box-shadow: rgba(59, 65, 68, 0.4) 0px 8px 20px -15px;
+`;
+
+const NavBarButtonClose = styled(NavBarButton)`
+  &:hover {
+    background-color: rgb(255, 255, 255);
+  }
 `;
 
 // ---> Layout is: row1 = GalleryHeader, row2 = GridGallery, ScheduleTour
@@ -249,11 +262,11 @@ const ModalCarousel = (props) => {
               </NavBarButtonSocial>
             </NavBarTabItem>
             <NavBarTabItem>
-              <NavBarButton onClick={props.closeModal}>
+              <NavBarButtonClose onClick={props.closeModal}>
                 <CloseIcon>
                   <img src="./icons/close.svg"></img>
                 </CloseIcon>
-              </NavBarButton>
+              </NavBarButtonClose>
             </NavBarTabItem>
           </NavBarSocial>
         </NavBar>
