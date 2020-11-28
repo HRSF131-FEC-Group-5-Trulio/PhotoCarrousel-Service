@@ -2,6 +2,11 @@ import React from 'React';
 import ItemDetailPage from './ItemDetailPage.jsx';
 import ModalCarousel from './ModalCarousel.jsx';
 import $ from 'jquery';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  font-family: Roboto, "Segoe UI Bold", Arial, sans-serif;
+`;
 
 class App extends React.Component {
 
@@ -49,18 +54,18 @@ class App extends React.Component {
     }
     if (!this.state.modalIsVisible) {
       return (
-        <div style={{"font":"Helvetica"}} onClick={this.handleClick}>
+        <AppContainer onClick={this.handleClick}>
           <ItemDetailPage photos={this.state.listing.photos}/>
-        </div>
+        </AppContainer>
       );
     } else {
       return (
-        <div style={{"font":"Helvetica"}}>
+        <AppContainer>
           <ItemDetailPage photos={this.state.listing.photos}>
           </ItemDetailPage>
           <ModalCarousel listing={this.state.listing} closeModal={this.closeModal}>
           </ModalCarousel>
-        </div>
+        </AppContainer>
       );
     }
   };

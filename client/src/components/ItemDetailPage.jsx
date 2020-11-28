@@ -65,6 +65,7 @@ const Social = styled.div`
   flex-direction: row;
   padding: 8px;
   z-index: 20;
+  font-family: Roboto, "Segoe UI Bold", Arial, sans-serif;
 `;
 
 const SocialButton = styled.button`
