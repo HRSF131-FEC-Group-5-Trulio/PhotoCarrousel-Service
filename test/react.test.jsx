@@ -9,18 +9,19 @@ import App from '../client/src/Components/App.jsx';
 
 // prevent tests from being "leaky"
 // @ https://reactjs.org/docs/testing-recipes.html
-// let container = null;
-// beforeEach(() => {
-//   // setup a DOM element as a render target
-//   container = document.createElement("div");
-//   document.body.appendChild(container);
-// });
-// afterEach(() => {
-//   // cleanup on exitign
-//   unmountComponentAtNode(container);
-//   container.remove();
-//   container = null;
-// })
+import { unmountComponentAtNode } from "react-dom";
+let container = null;
+beforeEach(() => {
+  // setup a DOM element as a render target
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+afterEach(() => {
+  // cleanup on exitign
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+})
 
 
 // dummy data
@@ -60,5 +61,7 @@ test('given an :id prop, shallow renders App component', () => {
   const wrapper = shallow(<div><App id={22}/></div>);
   expect(wrapper.find(App)).toHaveLength(1);
 });
+
+
 
 
