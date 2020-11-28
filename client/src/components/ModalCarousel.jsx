@@ -71,6 +71,11 @@ const ShareIcon = styled(NavBarIcon)`
   // line-height: -100px;
 `;
 
+const CloseIcon = styled(NavBarIcon)`
+  height: 25px;
+  width: 25px;
+`;
+
 const NavBarTabItem = styled.div`
   // transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
 `;
@@ -106,7 +111,8 @@ const NavBarButtonSocial = styled(NavBarButton)`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-right: 20px;
+  // margin-right: 5px;
+  margin-left: 10px;
 `;
 
 const NavBarButtonActive = styled(NavBarButton)`
@@ -231,7 +237,9 @@ const ModalCarousel = (props) => {
             </NavBarTabItem>
             <NavBarTabItem>
               <NavBarButton onClick={props.closeModal}>
-                X
+                <CloseIcon>
+                  <img src="./icons/close.svg"></img>
+                </CloseIcon>
               </NavBarButton>
             </NavBarTabItem>
           </NavBarSocial>
