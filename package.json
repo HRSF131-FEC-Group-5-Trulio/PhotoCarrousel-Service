@@ -24,6 +24,7 @@
     "mongoose": "^4.13.21",
     "nodemon": "^2.0.6",
     "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "styled-components": "^5.2.1",
     "webpack": "^2.7.0"
   },
@@ -39,7 +40,6 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^26.6.3",
     "jest-environment-enzyme": "^7.1.2",
-    "jest-enzyme": "^7.1.2",
-    "react-dom": "^16.14.0"
+    "jest-enzyme": "^7.1.2"
   }
 }

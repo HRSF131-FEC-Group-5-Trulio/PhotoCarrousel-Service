@@ -1,11 +1,13 @@
 // import libraries
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {mount, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import React from "react";
+import ReactDOM from "react-dom";
+import {mount, shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
-// import local fils
-import App from '../client/src/Components/App.jsx';
+// import local files
+import App from "../client/src/Components/App.jsx";
+import ItemDetailPage from "../client/src/Components/ItemDetailPage";
+import ModalCarousel from "../client/src/Components/ModalCarousel";
 
 // prevent tests from being "leaky"
 // @ https://reactjs.org/docs/testing-recipes.html
@@ -52,16 +54,24 @@ const sampleListing = {
   "__v": 0
 }
 
-test('shallow renders App component', () => {
+test("Shallow renders App component", () => {
   const wrapper = shallow(<div><App /></div>);
   expect(wrapper.find(App)).toHaveLength(1);
 });
 
-test('given an :id prop, shallow renders App component', () => {
+test("Given a Number \"id\" as a prop, it shallow renders App component", () => {
   const wrapper = shallow(<div><App id={22}/></div>);
   expect(wrapper.find(App)).toHaveLength(1);
 });
 
+test("Given an Object \"photos\" as a prop, it shallow renders ItemDetailPage component", () => {
+  const wrapper = shallow(<div><ItemDetailPage photos={sampleListing.photos}/></div>);
+  expect(wrapper.find(ItemDetailPage)).toHaveLength(1);
+});
 
+test("Given an Object \"listings\" as a prop, it shallow renders ModalCarousel component", () => {
+  const wrapper = shallow(<div><ModalCarousel listing={sampleListing}/></div>);
+  expect(wrapper.find(ModalCarousel)).toHaveLength(1);
+});
 
 
