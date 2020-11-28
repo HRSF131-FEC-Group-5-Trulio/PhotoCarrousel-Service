@@ -122,7 +122,7 @@ const NavBarButtonActive = styled(NavBarButton)`
   box-shadow: rgba(59, 65, 68, 0.4) 0px 8px 20px -15px;
 `;
 
-// ---> Layout GalleryHeader, GridGallery, ScheduleTour
+// ---> Layout is: row1 = GalleryHeader, row2 = GridGallery, ScheduleTour
 const LocalInfoBox = styled.div`
   flex: 1 1 0%;
   position: relative;
@@ -137,8 +137,20 @@ const ScheduleTour = styled.div`
 
 // --> $address | $price | $beds $baths
 const GalleryHeader = styled.div`
-  color: red;
-  background-color: blue;
+  font-size: 14px;
+  font-weight: bold;
+  height: 5%;
+  // align-self: center;
+  // display: flex;
+  // flex-direction: row;
+  line-height: 43px;
+  margin-left: 15px;
+  color: rgb(59, 65, 68);
+`;
+
+const Bar = styled.span`
+  font-size: 20px;
+  font-weight: normal;
 `;
 
 const GridGallery = styled.div`
@@ -202,7 +214,7 @@ const ModalCarousel = (props) => {
     //     </NavBar>
     //   </Modal>
     // </ModalContainer>
-    <ModalContainer>
+    <ModalContainer onClick={props.closeModal}>
       <Modal>
         <NavBar>
           <NavBarTabs>
@@ -246,7 +258,7 @@ const ModalCarousel = (props) => {
         </NavBar>
         <LocalInfoBox>
           <GalleryHeader>
-            <h2>From GalleryHeader</h2>
+            <span>{props.listing.address}  <Bar>|</Bar>  ${props.listing.price.toLocaleString()}  <Bar>|</Bar>  {props.listing.beds} Beds {props.listing.baths} Baths</span>
           </GalleryHeader>
           <GridGallery>
             <GalleryContent>
