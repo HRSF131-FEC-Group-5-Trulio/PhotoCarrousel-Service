@@ -8,6 +8,17 @@ const Page = styled.div`
   justify-content: center;
   // line-item: center;
   border: solid;
+  // overflow: hidden;
+`;
+
+const Photos = styled.div`
+  transition: transform 0.5s;
+  &:hover {
+    transform: scale(1.04);
+  }
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `;
 
 const PhotosBoxParent = styled.div`
@@ -17,9 +28,6 @@ const PhotosBoxParent = styled.div`
   border: solid;
   width: 55%;
   overflow: hidden;
-  &:hover {
-    transform: scale(1.5);
-  }
 `;
 
 const ColPhotosBox = styled.div`
@@ -56,6 +64,7 @@ const Social = styled.div`
   display: flex;
   flex-direction: row;
   padding: 8px;
+  z-index: 20;
 `;
 
 const SocialButton = styled.button`
@@ -124,11 +133,13 @@ const ItemDetailPage = (props) => {
             </SocialButtonText>
           </SocialButton>
         </Social>
-        <BigPhoto src={props.photos.large[0]}></BigPhoto>
-        <ColPhotosBox>
-          <LilPhoto_upper src={props.photos.small[0]}></LilPhoto_upper>
-          <LilPhoto_lower src={props.photos.small[1]}></LilPhoto_lower>
-        </ColPhotosBox>
+        <Photos>
+          <BigPhoto src={props.photos.large[0]}></BigPhoto>
+          <ColPhotosBox>
+            <LilPhoto_upper src={props.photos.small[0]}></LilPhoto_upper>
+            <LilPhoto_lower src={props.photos.small[1]}></LilPhoto_lower>
+          </ColPhotosBox>
+        </Photos>
       </PhotosBoxParent>
     </Page>
   );
