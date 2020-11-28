@@ -98,8 +98,6 @@ const SocialButtonText = styled.div`
   line-height: 30px;
 `;
 
-
-
 const ItemDetailPage = (props) => {
   return (
     <Page>

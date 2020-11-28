@@ -85,5 +85,3 @@ app.listen(port, (error) => {
     console.log("PhotoCarrousel-Service express server listening on " + port);
   }
 });
-
-

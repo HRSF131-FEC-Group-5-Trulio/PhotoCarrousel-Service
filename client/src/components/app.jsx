@@ -14,6 +14,7 @@ class App extends React.Component {
       listing: null,
     }
     this.handleClick = this.handleClick.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   };
 
   componentDidMount() {
@@ -37,6 +38,11 @@ class App extends React.Component {
     this.setState({modalIsVisible: true});
   };
 
+  closeModal() {
+    console.log("app.jsx::closeModal()");
+    this.setState({modalIsVisible: false});
+  }
+
   render() {
     if (this.state.isLoading) {
       return (<div><h2>...Loading</h2></div>)
@@ -52,7 +58,7 @@ class App extends React.Component {
         <div style={{"font":"Helvetica"}}>
           <ItemDetailPage photos={this.state.listing.photos}>
           </ItemDetailPage>
-          <ModalCarousel listing={this.state.listing}>
+          <ModalCarousel listing={this.state.listing} closeModal={this.closeModal}>
           </ModalCarousel>
         </div>
       );

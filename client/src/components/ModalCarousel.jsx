@@ -229,6 +229,11 @@ const ModalCarousel = (props) => {
                 </NavBarButtonText>
               </NavBarButtonSocial>
             </NavBarTabItem>
+            <NavBarTabItem>
+              <NavBarButton onClick={props.closeModal}>
+                X
+              </NavBarButton>
+            </NavBarTabItem>
           </NavBarSocial>
         </NavBar>
         <LocalInfoBox>
