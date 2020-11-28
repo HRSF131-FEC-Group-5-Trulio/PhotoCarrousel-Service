@@ -15,6 +15,7 @@ const ModalContainer = styled.div`
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.6); // shadowy transparency
   overflow-y: auto;
+  z-index: 30;
 `;
 
 const Modal = styled.div`

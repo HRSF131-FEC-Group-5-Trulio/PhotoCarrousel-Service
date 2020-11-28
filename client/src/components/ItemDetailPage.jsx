@@ -83,6 +83,10 @@ const SocialButton = styled.button`
   display: flex;
   flex-direction: row;
   margin-right: 25px;
+  &:hover {
+    background-color: grey;
+  }
+
 `;
 
 const SocialIcon = styled.div`
