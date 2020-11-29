@@ -82,7 +82,6 @@ const CloseIcon = styled(NavBarIcon)`
 `;
 
 const NavBarTabItem = styled.div`
-  // transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
 `;
 
 const NavBarButton = styled.button`
@@ -198,15 +197,10 @@ const TrippleRow = styled.div`
   height: 340px;
 `;
 
-const SmallPhoto = styled.img`
-  // width: 330px;
-  width: calc(33% - 2.5px);
-  height: 340px;
-  // padding: 5px;
-`;
-
 const PadderHorizontal = styled.div`
-  width: 12px;
+  width: 8px;
+  border: solid white;
+  flex-shrink: 0;
 `;
 
 const PadderVertical = styled.div`
@@ -225,8 +219,20 @@ const SingleRow = styled.div`
 
 const LargePhoto = styled.img`
   min-width: 100%;
-  min-height: 100%;
+  min-height: 88%;
   flex-shrink: 0;
+`;
+
+// --> 67% actual size?
+const MediumPhoto = styled.img`
+  min-width: calc(67% - 50px);
+  min-height: 67%;
+  flex-shrink: 0;
+`;
+
+const SmallPhoto = styled.img`
+  width: calc(33% - 2.5px);
+  height: 340px;
 `;
 
 const DoubleRow = styled.div`
@@ -237,12 +243,6 @@ const DoubleRow = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-`;
-
-const MediumPhoto = styled.img`
-  min-width: 100%;
-  min-height: 100%;
-  flex-shrink: 0;
 `;
 
 const stifleChildClick = (e) => {
