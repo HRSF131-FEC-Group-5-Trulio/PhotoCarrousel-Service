@@ -45,17 +45,17 @@ const BigPhoto = styled.img`
   border-bottom-left-radius: 25px;
 `;
 
-const LilPhoto_upper = styled.img`
+const LilPhoto = styled.img`
   height: 250px;
   width: 248px;
   padding: 5px;
+`;
+
+const LilPhoto_upper = styled(LilPhoto)`
   border-top-right-radius: 25px;
 `;
 
-const LilPhoto_lower = styled.img`
-  height: 250px;
-  width: 248px;
-  padding: 5px;
+const LilPhoto_lower = styled(LilPhoto)`
   border-bottom-right-radius: 25px;
 `;
 
