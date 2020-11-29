@@ -26,8 +26,9 @@ const PhotosBoxParent = styled.div`
   justify-content: center;
   position: relative;
   // border: solid;
-  width: 55%;
+  width: 53%;
   overflow: hidden;
+  border-radius: 8px;
 `;
 
 const ColPhotosBox = styled.div`
@@ -114,6 +115,13 @@ const ShareIcon = styled(SocialIcon)`
 const SocialButtonText = styled.div`
   line-height: 30px;
 `;
+
+const Tags = styled.div`
+`;
+
+const getTags = () => {
+  return (<h1>From getTags()</h1>)
+};
 
 const ItemDetailPage = (props) => {
   return (
