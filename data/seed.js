@@ -8,6 +8,9 @@ const s3Links = [
       "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/122+Tiburon+Blvd/large/img_0.webp",
       "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/122+Tiburon+Blvd/large/img_1.webp",
       "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/122+Tiburon+Blvd/large/img_10.webp",
+      "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/122+Tiburon+Blvd/large/img_0.webp",
+      "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/122+Tiburon+Blvd/large/img_1.webp",
+      "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/122+Tiburon+Blvd/large/img_10.webp",
     ],
     "small": [
       "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/122+Tiburon+Blvd/small/img_0.webp",
@@ -17,6 +20,9 @@ const s3Links = [
   },
   {
     "large": [
+      "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/58+Shady+Ln./large/img_0.webp",
+      "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/58+Shady+Ln./large/img_1.webp",
+      "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/58+Shady+Ln./large/img_10.webp",
       "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/58+Shady+Ln./large/img_0.webp",
       "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/58+Shady+Ln./large/img_1.webp",
       "https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/Trulia_Pics/58+Shady+Ln./large/img_10.webp"
