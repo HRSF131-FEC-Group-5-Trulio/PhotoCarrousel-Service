@@ -7,7 +7,7 @@ const Page = styled.div`
   flex-direction: row;
   justify-content: center;
   // line-item: center;
-  border: solid;
+  // border: solid;
   // overflow: hidden;
 `;
 
@@ -25,7 +25,7 @@ const PhotosBoxParent = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  border: solid;
+  // border: solid;
   width: 55%;
   overflow: hidden;
 `;
