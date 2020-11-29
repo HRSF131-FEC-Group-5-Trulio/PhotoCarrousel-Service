@@ -141,7 +141,7 @@ const LocalInfoBox = styled.div`
   flex: 1 1 0%;
   position: relative;
   flex-direction: row;
-  height: 93%;
+  height: 97%;
 `;
 
 const ScheduleTour = styled.div`
@@ -185,9 +185,9 @@ const GalleryContent = styled.div`
   // display: flex;
   // flex-direction: column;
   overflow-y: auto;
-  border: solid;
+  // border: solid;
   // position: absolute;
-  border-radius: 25px;
+  border-radius: 8px;
   height: calc(100% - 81px);
 `;
 
@@ -195,26 +195,44 @@ const TrippleRow = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 340px;
 `;
 
 const SmallPhoto = styled.img`
   // width: 330px;
   width: calc(33% - 2.5px);
-  height: 230px;
-  padding: 5px;
+  height: 340px;
+  // padding: 5px;
+`;
+
+const PadderHorizontal = styled.div`
+  width: 12px;
+`;
+
+const PadderVertical = styled.div`
+  height: 12px;
 `;
 
 const SingleRow = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%
-  // height: 100%
+  // padding: 5px;
+  // margin-top: 5px;
+  // margin-bottom: 10px;
+  width: 100%;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 `;
 
 const LargePhoto = styled.img`
-  width: 100%;
+  // width: 100%;
   // height: 560px;
-  padding: 5px;
+  // padding: 5px;
+  min-width: 100%;
+  min-height: 100%;
+  flex-shrink: 0;
 `;
 
 const stifleChildClick = (e) => {
@@ -287,17 +305,25 @@ const ModalCarousel = (props) => {
                 shuffle(rows.tripplets.concat(/*doubleRowsPhotos,*/rows.singlets)).map(row => {
                   if (row.length === 3) {
                     return (
-                      <TrippleRow>
-                        <SmallPhoto src={row[0]}></SmallPhoto>
-                        <SmallPhoto src={row[1]}></SmallPhoto>
-                        <SmallPhoto src={row[2]}></SmallPhoto>
-                      </TrippleRow>
+                      <div>
+                        <TrippleRow>
+                          <SmallPhoto src={row[0]}></SmallPhoto>
+                          <PadderHorizontal></PadderHorizontal>
+                          <SmallPhoto src={row[1]}></SmallPhoto>
+                          <PadderHorizontal></PadderHorizontal>
+                          <SmallPhoto src={row[2]}></SmallPhoto>
+                        </TrippleRow>
+                        <PadderVertical></PadderVertical>
+                      </div>
                     )
                   } else {
                     return (
-                      <SingleRow>
-                        <LargePhoto src={row}></LargePhoto>
-                      </SingleRow>
+                      <div>
+                        <SingleRow>
+                          <LargePhoto src={row}></LargePhoto>
+                        </SingleRow>
+                        <PadderVertical></PadderVertical>
+                      </div>
                     )
                   }
                 })
