@@ -197,6 +197,11 @@ const TrippleRow = styled.div`
   height: 340px;
 `;
 
+const SmallPhoto = styled.img`
+  width: calc(33% - 2.5px);
+  height: 340px;
+`;
+
 const PadderHorizontal = styled.div`
   width: 8px;
   border: solid white;
@@ -228,11 +233,6 @@ const MediumPhoto = styled.img`
   min-width: calc(67% - 50px);
   min-height: 67%;
   flex-shrink: 0;
-`;
-
-const SmallPhoto = styled.img`
-  width: calc(33% - 2.5px);
-  height: 340px;
 `;
 
 const DoubleRow = styled.div`
