@@ -30,7 +30,8 @@ const PhotosBoxParent = styled.div`
   justify-content: center;
   position: relative;
   // border: solid;
-  width: 100%;
+  // width: 100%;
+  width: 1000px;
   overflow: hidden;
   border-radius: 8px;
 `;
