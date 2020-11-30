@@ -55,7 +55,11 @@ class App extends React.Component {
     if (!this.state.modalIsVisible) {
       return (
         <AppContainer onClick={this.handleClick}>
-          <ItemDetailPage photos={this.state.listing.photos}/>
+          <ItemDetailPage
+            photos={this.state.listing.photos}
+            newConstruction={this.state.listing.newConstruction}
+            quickMoveIn={this.state.listing.quickMoveIn}
+          />
         </AppContainer>
       );
     } else {

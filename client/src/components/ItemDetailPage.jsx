@@ -135,16 +135,70 @@ const SocialButtonText = styled.div`
 `;
 
 const Tags = styled.div`
+  position: absolute;
+  left: 8px;
+  top: 7px;
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  z-index: 20;
+  font-family: Roboto, "Segoe UI Bold", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  // border: 1px black;
+  justify-content: space-around;
 `;
 
-const getTags = () => {
-  return (<h1>From getTags()</h1>)
+const Tag = styled.div`
+  border-radius: 4px;
+  border: 1px black;
+  background-color: white;
+  color: rgb(0, 178, 91);
+  box-sizing: border-box;
+  padding: 2px 4px;
+  margin-right: 8px;
+`;
+
+const getTags = (newConstruction, quickMoveIn) => {
+  if (newConstruction && quickMoveIn) {
+    return (
+      <Tags>
+        <Tag>FOR SALE</Tag>
+        <Tag>NEW CONSTRUCTION</Tag>
+        <Tag>QUICK MOVE-IN</Tag>
+      </Tags>
+    )
+  }
+  if (newConstruction) {
+    return (
+      <Tags>
+        <Tag>FOR SALE</Tag>
+        <Tag>NEW CONSTRUCTION</Tag>
+      </Tags>
+    )
+  }
+  if (quickMoveIn) {
+    return (
+      <Tags>
+        <Tag>FOR SALE</Tag>
+        <Tag>QUICK MOVE-IN</Tag>
+      </Tags>
+    )
+  }
+  return (
+    <Tags>
+      <Tag>FOR SALE</Tag>
+    </Tags>
+  )
 };
 
 const ItemDetailPage = (props) => {
   return (
     <Page>
       <PhotosBoxParent>
+        {
+          getTags(props.newConstruction, props.quickMoveIn)
+        }
         <Social>
           <SocialButton>
             <SaveIcon>
