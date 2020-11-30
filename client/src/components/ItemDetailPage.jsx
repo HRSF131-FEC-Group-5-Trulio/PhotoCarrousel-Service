@@ -7,6 +7,7 @@ const Page = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  margin-top: 100px;
   // width: 1000px;
   // line-item: center;
   // border: solid;
