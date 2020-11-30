@@ -364,7 +364,7 @@ const ModalCarousel = (props) => {
               </GalleryContent>
             </GridGallery>
             <ScheduleTourContainer>
-              <h1>From ScheduleTour</h1>
+              <ScheduleTour></ScheduleTour>
             </ScheduleTourContainer>
           </LocalInfo>
         </LocalInfoBox>
