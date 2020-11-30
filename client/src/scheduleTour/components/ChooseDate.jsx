@@ -127,7 +127,7 @@ class ChooseDate extends React.Component {
             </InnerFormDiv>
           </Padding>
         </Position>
-        <LeftArrowDiv left={this.state.left}>
+        {/* <LeftArrowDiv left={this.state.left}>
           <Button
             id="leftArrow"
             type="button"
@@ -150,7 +150,7 @@ class ChooseDate extends React.Component {
           >
             <i className="fas fa-angle-right" />
           </Button>
-        </RightArrowDiv>
+        </RightArrowDiv> */}
       </div>
     );
   }

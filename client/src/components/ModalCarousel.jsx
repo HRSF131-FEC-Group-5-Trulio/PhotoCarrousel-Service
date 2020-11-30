@@ -18,6 +18,7 @@ const ModalContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.6); // shadowy transparency
   overflow-y: auto;
   z-index: 30;
+  overflow-x: hidden;
 `;
 
 const Modal = styled.div`
@@ -29,6 +30,7 @@ const Modal = styled.div`
   // transform: translate3d(0px, 0px, 0px); // _NoEffect?
   height: 90%;
   overflow-y: hidden;
+  overflow-x: hidden;
 `;
 
 // _ToDo:
@@ -154,7 +156,7 @@ const LocalInfo = styled.div`
 `;
 
 const ScheduleTourContainer = styled.div`
-  width: 21%;
+  width: 18%;
   // background-color: blue;
   justify-content: flex-start;
   align-content: center;
@@ -186,13 +188,15 @@ const Bar = styled.span`
 const GridGallery = styled.div`
   display: flex;
   flex-direction: column;
-  width: calc(100% - 358px);
+  // width: calc(100% - 358px);
+  width: 75%
   height: 100%;
   position: relative;
   border-radius: 8px;
   margin: 0px 8px;
   // border: solid;
   overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const GalleryContent = styled.div`
@@ -203,6 +207,7 @@ const GalleryContent = styled.div`
   // position: absolute;
   border-radius: 8px;
   height: calc(100% - 81px);
+  overflow-x: hidden;
 `;
 
 const TrippleRow = styled.div`

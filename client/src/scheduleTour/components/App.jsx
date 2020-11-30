@@ -9,7 +9,7 @@ const OneThird = styled.div`
   border-style: solid;
   border-color: transparent;
   min-width: 310px;
-  width: 33%;
+  width: 100%;
   box-sizing: border-box;
   display: block;
   outline: none;
