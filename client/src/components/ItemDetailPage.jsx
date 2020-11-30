@@ -19,7 +19,7 @@ const Photos = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  border: solid;
+  // border: solid;
   height: 520px;
 `;
 
@@ -74,7 +74,8 @@ const LilPhoto_lower = styled(LilPhoto)`
 
 const Social = styled.div`
   position: absolute;
-  right: 0%;
+  right: -15px;
+  top: 7px;
   display: flex;
   flex-direction: row;
   padding: 8px;
