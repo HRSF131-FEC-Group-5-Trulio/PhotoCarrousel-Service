@@ -8,10 +8,6 @@ const Page = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: 100px;
-  // width: 1000px;
-  // line-item: center;
-  // border: solid;
-  // overflow: hidden;
 `;
 
 const Photos = styled.div`
@@ -94,6 +90,7 @@ const SocialButton = styled.button`
   cursor: pointer;
   text-align: center; // icon collisions?
   font-weight: bold;
+  font-size: 12px;
   white-space: nowrap;
   line-height: 1.5;
   padding: 8px 16px;
@@ -106,32 +103,35 @@ const SocialButton = styled.button`
   &:hover {
     background-color: rgb(235, 235, 235);
   }
+  height: 40px;
+  width: 100px;
 `;
 
 const SocialIcon = styled.div`
-  // float: left;
   padding: 5px;
   align-items: left;
-  // margin-left: 4px;
-  // right: 0px;
-  // stroke: red;
-  // background-color: red;
-  // color: blue;
 `;
 
 const SaveIcon = styled(SocialIcon)`
-  height: 17px;
-  width: 17px;
+  height: 25px;
+  width: 20px;
+  // margin-top: -5px;
+  margin-left: -10px;
+  margin-right: 10px;
 `;
 
 const ShareIcon = styled(SocialIcon)`
-  height: 27px;
-  width: 27px;
-  margin-top: -5px;
+  min-height: 50%;
+  min-width: 50%;
+  margin-top: -10px;
+  margin-left: -10px;
 `;
 
 const SocialButtonText = styled.div`
   line-height: 30px;
+  font-weight: bold;
+  font-family: Roboto, "Segoe UI Bold", Arial, sans-serif;
+  font-size: 12px;
 `;
 
 const Tags = styled.div`
@@ -210,7 +210,7 @@ const ItemDetailPage = (props) => {
           </SocialButton>
           <SocialButton>
             <ShareIcon>
-              <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/share.svg" style={{"color":"red"}}></img>
+              <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/share.svg"></img>
             </ShareIcon>
             <SocialButtonText>
               Share
