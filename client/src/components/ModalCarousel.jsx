@@ -144,7 +144,7 @@ const LocalInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   height: 97%;
-  border: solid red;
+  // border: solid red;
 `;
 
 const LocalInfo = styled.div`
@@ -160,7 +160,7 @@ const ScheduleTourContainer = styled.div`
   align-content: center;
   display: flex;
   flex-direction: column;
-  border: solid;
+  // border: solid;
 `;
 
 // --> $address | $price | $beds $baths
@@ -199,7 +199,7 @@ const GalleryContent = styled.div`
   // display: flex;
   // flex-direction: column;
   overflow-y: auto;
-  border: solid;
+  // border: solid;
   // position: absolute;
   border-radius: 8px;
   height: calc(100% - 81px);
