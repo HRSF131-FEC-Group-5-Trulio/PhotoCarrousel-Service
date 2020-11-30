@@ -82,7 +82,6 @@ const CloseIcon = styled(NavBarIcon)`
 `;
 
 const NavBarTabItem = styled.div`
-  // transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
 `;
 
 const NavBarButton = styled.button`
@@ -199,14 +198,14 @@ const TrippleRow = styled.div`
 `;
 
 const SmallPhoto = styled.img`
-  // width: 330px;
   width: calc(33% - 2.5px);
   height: 340px;
-  // padding: 5px;
 `;
 
 const PadderHorizontal = styled.div`
-  width: 12px;
+  width: 8px;
+  border: solid white;
+  flex-shrink: 0;
 `;
 
 const PadderVertical = styled.div`
@@ -216,9 +215,6 @@ const PadderVertical = styled.div`
 const SingleRow = styled.div`
   display: flex;
   flex-direction: row;
-  // padding: 5px;
-  // margin-top: 5px;
-  // margin-bottom: 10px;
   width: 100%;
   height: 600px;
   justify-content: center;
@@ -227,12 +223,26 @@ const SingleRow = styled.div`
 `;
 
 const LargePhoto = styled.img`
-  // width: 100%;
-  // height: 560px;
-  // padding: 5px;
   min-width: 100%;
-  min-height: 100%;
+  min-height: 88%;
   flex-shrink: 0;
+`;
+
+// --> 67% actual size?
+const MediumPhoto = styled.img`
+  min-width: calc(67% - 50px);
+  min-height: 67%;
+  flex-shrink: 0;
+`;
+
+const DoubleRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 460px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 `;
 
 const stifleChildClick = (e) => {
@@ -241,7 +251,7 @@ const stifleChildClick = (e) => {
 
 const ModalCarousel = (props) => {
   let rows = getRows(props.listing.photos);
-  console.log(rows);
+  console.log('rows: \n', rows);
   return (
     // <ModalContainer>
     //   <h1>From ModalContainer</h1>
@@ -302,7 +312,7 @@ const ModalCarousel = (props) => {
             <GalleryContent>
               { // Images...
                 // all rows concat --> randomize rows order ---> map over rows, get components
-                shuffle(rows.tripplets.concat(/*doubleRowsPhotos,*/rows.singlets)).map(row => {
+                shuffle(rows.tripplets.concat(rows.doublets, rows.singlets)).map(row => {
                   if (row.length === 3) {
                     return (
                       <div>
@@ -313,6 +323,17 @@ const ModalCarousel = (props) => {
                           <PadderHorizontal></PadderHorizontal>
                           <SmallPhoto src={row[2]}></SmallPhoto>
                         </TrippleRow>
+                        <PadderVertical></PadderVertical>
+                      </div>
+                    )
+                  } else if (row.length === 2) {
+                    return (
+                      <div>
+                        <DoubleRow>
+                          <MediumPhoto src={row[0]}></MediumPhoto>
+                          <PadderHorizontal></PadderHorizontal>
+                          <MediumPhoto src={row[1]}></MediumPhoto>
+                        </DoubleRow>
                         <PadderVertical></PadderVertical>
                       </div>
                     )
@@ -356,18 +377,47 @@ function shuffle(a) {
 
 /**
  * @param {Object} photos, {small: [strings], large: [strings]}
- * @returns {Object} rows, {trippleRows: [[strings]], singleRows: [strings]}
+ * @returns {Object} rows, {trippleRows: [[strings]], doubleRows: [[strings]], singleRows: [strings]}
  */
 const getRows = (photos) => {
   let rows = {};
   rows.tripplets = [];
-  rows.singlets = photos.large; // _ToDo: split photos.large into doublets + singlets
+  rows.doublets = [];
+  rows.singlets = [];
   let numTripplets = Math.floor(photos.small.length / 3);
   for (let i = 0; i < numTripplets; i++) {
     rows.tripplets.push(photos.small.slice(i * 3, (i * 3 + 3)));
   }
+  // get the first half of the large photos, rounded to an even number
+  let numDoublets = Math.floor(photos.large.length / 3);
+  if (numDoublets % 2 !== 0) numDoublets++;
+  let temp = [...photos.large];
+  for (let i = 0; i < numDoublets; i++) {
+    rows.doublets.push(temp.splice(0, 2));
+  }
+  if (rows.doublets[rows.doublets.length - 1].length === 1) {
+    rows.singlets.push(rows.doublets.pop());
+  }
+  while (temp.length) {
+    rows.singlets.push(temp.pop());
+  }
   return rows;
 }
+
+// /**
+//  * @param {Object} photos, {small: [strings], large: [strings]}
+//  * @returns {Object} rows, {trippleRows: [[strings]], singleRows: [strings]}
+//  */
+// const getRows = (photos) => {
+//   let rows = {};
+//   rows.tripplets = [];
+//   rows.singlets = photos.large; // _ToDo: split photos.large into doublets + singlets
+//   let numTripplets = Math.floor(photos.small.length / 3);
+//   for (let i = 0; i < numTripplets; i++) {
+//     rows.tripplets.push(photos.small.slice(i * 3, (i * 3 + 3)));
+//   }
+//   return rows;
+// }
 
 export default ModalCarousel;
 

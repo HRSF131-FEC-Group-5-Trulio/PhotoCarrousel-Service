@@ -19,6 +19,8 @@ const Photos = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  // border: solid;
+  height: 520px;
 `;
 
 const PhotosBoxParent = styled.div`
@@ -26,14 +28,23 @@ const PhotosBoxParent = styled.div`
   justify-content: center;
   position: relative;
   // border: solid;
-  width: 55%;
+  width: 53%;
   overflow: hidden;
+  border-radius: 8px;
 `;
 
 const ColPhotosBox = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: top;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+  // border: solid;
+  height: 98%;
+  margin-left: 5px;
+  margin-top: 5px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 `;
 
 const BigPhoto = styled.img`
@@ -44,23 +55,27 @@ const BigPhoto = styled.img`
   border-bottom-left-radius: 25px;
 `;
 
-const LilPhoto_upper = styled.img`
-  height: 250px;
-  width: 248px;
-  padding: 5px;
-  border-top-right-radius: 25px;
+const LilPhoto = styled.img`
+  max-height: 400px;
+  max-width: 400px;
+  flex-shrink: 0;
+  // padding: 5px;
+  // transform: scale(0.9);
+  margin-bottom: 10px;
 `;
 
-const LilPhoto_lower = styled.img`
-  height: 250px;
-  width: 248px;
-  padding: 5px;
-  border-bottom-right-radius: 25px;
+const LilPhoto_upper = styled(LilPhoto)`
+  // border-top-right-radius: 25px;
+`;
+
+const LilPhoto_lower = styled(LilPhoto)`
+  // border-bottom-right-radius: 25px;
 `;
 
 const Social = styled.div`
   position: absolute;
-  right: 0%;
+  right: -15px;
+  top: 7px;
   display: flex;
   flex-direction: row;
   padding: 8px;
@@ -114,6 +129,13 @@ const ShareIcon = styled(SocialIcon)`
 const SocialButtonText = styled.div`
   line-height: 30px;
 `;
+
+const Tags = styled.div`
+`;
+
+const getTags = () => {
+  return (<h1>From getTags()</h1>)
+};
 
 const ItemDetailPage = (props) => {
   return (
