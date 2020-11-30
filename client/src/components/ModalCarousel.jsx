@@ -2,6 +2,8 @@ import React from 'react';
 import $ from 'jquery'; // for ajax
 import styled from 'styled-components';
 
+import ScheduleTour from "../scheduleTour/components/app.jsx";
+
 const ModalContainer = styled.div`
   position: fixed;
   width: 100vw;
@@ -16,6 +18,7 @@ const ModalContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.6); // shadowy transparency
   overflow-y: auto;
   z-index: 30;
+  overflow-x: hidden;
 `;
 
 const Modal = styled.div`
@@ -27,6 +30,7 @@ const Modal = styled.div`
   // transform: translate3d(0px, 0px, 0px); // _NoEffect?
   height: 90%;
   overflow-y: hidden;
+  overflow-x: hidden;
 `;
 
 // _ToDo:
@@ -75,10 +79,10 @@ const ShareIcon = styled(NavBarIcon)`
 const CloseIcon = styled(NavBarIcon)`
   height: 25px;
   width: 25px;
-  &:hover { // _TODO: X should turn green on hover!
-    background-color: black;
-    fill: white;
-  }
+  // &:hover { // _TODO: X should turn green on hover!
+  //   background-color: black;
+  //   fill: white;
+  // }
 `;
 
 const NavBarTabItem = styled.div`
@@ -130,22 +134,35 @@ const NavBarButtonActive = styled(NavBarButton)`
 `;
 
 const NavBarButtonClose = styled(NavBarButton)`
-  &:hover {
-    background-color: rgb(255, 255, 255);
-  }
+  // &:hover {
+  //   background-color: rgb(255, 255, 255);
+  // }
 `;
 
 // ---> Layout is: row1 = GalleryHeader, row2 = GridGallery, ScheduleTour
 const LocalInfoBox = styled.div`
-  flex: 1 1 0%;
+  // flex: 1 1 0%;
   position: relative;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   height: 97%;
+  // border: solid red;
 `;
 
-const ScheduleTour = styled.div`
-  width: 21%;
-  background-color: blue;
+const LocalInfo = styled.div`
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+`;
+
+const ScheduleTourContainer = styled.div`
+  width: 18%;
+  // background-color: blue;
+  justify-content: flex-start;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  // border: solid;
 `;
 
 // --> $address | $price | $beds $baths
@@ -171,13 +188,15 @@ const Bar = styled.span`
 const GridGallery = styled.div`
   display: flex;
   flex-direction: column;
-  width: calc(100% - 358px);
+  // width: calc(100% - 358px);
+  width: 75%
   height: 100%;
   position: relative;
   border-radius: 8px;
   margin: 0px 8px;
   // border: solid;
   overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const GalleryContent = styled.div`
@@ -188,6 +207,7 @@ const GalleryContent = styled.div`
   // position: absolute;
   border-radius: 8px;
   height: calc(100% - 81px);
+  overflow-x: hidden;
 `;
 
 const TrippleRow = styled.div`
@@ -308,52 +328,55 @@ const ModalCarousel = (props) => {
           <GalleryHeader>
             <span>{props.listing.address}  <Bar>|</Bar>  ${props.listing.price.toLocaleString()}  <Bar>|</Bar>  {props.listing.beds} Beds {props.listing.baths} Baths</span>
           </GalleryHeader>
-          <GridGallery>
-            <GalleryContent>
-              { // Images...
-                // all rows concat --> randomize rows order ---> map over rows, get components
-                shuffle(rows.tripplets.concat(rows.doublets, rows.singlets)).map(row => {
-                  if (row.length === 3) {
-                    return (
-                      <div>
-                        <TrippleRow>
-                          <SmallPhoto src={row[0]}></SmallPhoto>
-                          <PadderHorizontal></PadderHorizontal>
-                          <SmallPhoto src={row[1]}></SmallPhoto>
-                          <PadderHorizontal></PadderHorizontal>
-                          <SmallPhoto src={row[2]}></SmallPhoto>
-                        </TrippleRow>
-                        <PadderVertical></PadderVertical>
-                      </div>
-                    )
-                  } else if (row.length === 2) {
-                    return (
-                      <div>
-                        <DoubleRow>
-                          <MediumPhoto src={row[0]}></MediumPhoto>
-                          <PadderHorizontal></PadderHorizontal>
-                          <MediumPhoto src={row[1]}></MediumPhoto>
-                        </DoubleRow>
-                        <PadderVertical></PadderVertical>
-                      </div>
-                    )
-                  } else {
-                    return (
-                      <div>
-                        <SingleRow>
-                          <LargePhoto src={row}></LargePhoto>
-                        </SingleRow>
-                        <PadderVertical></PadderVertical>
-                      </div>
-                    )
-                  }
-                })
-              }
-            </GalleryContent>
-          </GridGallery>
-          <ScheduleTour>
-            <h1>From ScheduleTour</h1>
-          </ScheduleTour>
+          <LocalInfo>
+            <GridGallery>
+              <GalleryContent>
+                { // Images...
+                  // all rows concat --> randomize rows order ---> map over rows, get components
+                  shuffle(rows.tripplets.concat(rows.doublets, rows.singlets)).map(row => {
+                    if (row.length === 3) {
+                      return (
+                        <div>
+                          <TrippleRow>
+                            <SmallPhoto src={row[0]}></SmallPhoto>
+                            <PadderHorizontal></PadderHorizontal>
+                            <SmallPhoto src={row[1]}></SmallPhoto>
+                            <PadderHorizontal></PadderHorizontal>
+                            <SmallPhoto src={row[2]}></SmallPhoto>
+                          </TrippleRow>
+                          <PadderVertical></PadderVertical>
+                        </div>
+                      )
+                    } else if (row.length === 2) {
+                      return (
+                        <div>
+                          <DoubleRow>
+                            <MediumPhoto src={row[0]}></MediumPhoto>
+                            <PadderHorizontal></PadderHorizontal>
+                            <MediumPhoto src={row[1]}></MediumPhoto>
+                          </DoubleRow>
+                          <PadderVertical></PadderVertical>
+                        </div>
+                      )
+                    } else {
+                      return (
+                        <div>
+                          <SingleRow>
+                            <LargePhoto src={row}></LargePhoto>
+                          </SingleRow>
+                          <PadderVertical></PadderVertical>
+                        </div>
+                      )
+                    }
+                  })
+                }
+              </GalleryContent>
+            </GridGallery>
+            <ScheduleTourContainer>
+              <ScheduleTour></ScheduleTour>
+              <PadderVertical></PadderVertical>
+            </ScheduleTourContainer>
+          </LocalInfo>
         </LocalInfoBox>
       </Modal>
     </ModalContainer>
