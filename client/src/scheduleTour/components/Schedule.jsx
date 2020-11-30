@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import TourType from './TourType';
-import ChooseDate from './ChooseDate';
-import ChooseTime from './ChooseTime';
-import PersonalInput from './PersonalInput';
-import CheckBox from './CheckBox';
+import TourType from './TourType.jsx';
+import ChooseDate from './ChooseDate.jsx';
+import ChooseTime from './ChooseTime.jsx';
+import PersonalInput from './PersonalInput.jsx';
+import CheckBox from './CheckBox.jsx';
 
 const ScehduleDiv = styled.div`
   padding-top: 16px;

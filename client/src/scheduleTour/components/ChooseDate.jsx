@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ChooseDateItem from './ChooseDateItem';
+import ChooseDateItem from './ChooseDateItem.jsx';
 
 const InnerFormDiv = styled.div`
   transform: translateX(0%);

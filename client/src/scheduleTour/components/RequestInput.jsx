@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PersonalInput from './PersonalInput';
+import PersonalInput from './PersonalInput.jsx';
 
 const Partition = styled.div`
   display: inline-block;

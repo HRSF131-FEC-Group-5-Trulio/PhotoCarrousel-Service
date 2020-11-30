@@ -2,6 +2,8 @@ import React from 'react';
 import $ from 'jquery'; // for ajax
 import styled from 'styled-components';
 
+import ScheduleTour from "../scheduleTour/components/app.jsx";
+
 const ModalContainer = styled.div`
   position: fixed;
   width: 100vw;
@@ -151,7 +153,7 @@ const LocalInfo = styled.div`
   flex-direction: row;
 `;
 
-const ScheduleTour = styled.div`
+const ScheduleTourContainer = styled.div`
   width: 21%;
   background-color: blue;
   border: solid;
@@ -361,9 +363,9 @@ const ModalCarousel = (props) => {
                 }
               </GalleryContent>
             </GridGallery>
-            <ScheduleTour>
+            <ScheduleTourContainer>
               <h1>From ScheduleTour</h1>
-            </ScheduleTour>
+            </ScheduleTourContainer>
           </LocalInfo>
         </LocalInfoBox>
       </Modal>

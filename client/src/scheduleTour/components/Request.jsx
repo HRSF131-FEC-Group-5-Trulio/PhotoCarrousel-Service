@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import RequestInput from './RequestInput';
-import CheckBox from './CheckBox';
+import RequestInput from './RequestInput.jsx';
+import CheckBox from './CheckBox.jsx';
 
 const RequestDiv = styled.div`
   padding-top: 16px;

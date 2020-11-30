@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ChooseTimeItem from './ChooseTimeItem';
+import ChooseTimeItem from './ChooseTimeItem.jsx';
 
 const SelectDiv = styled.div`
   width: 100%;

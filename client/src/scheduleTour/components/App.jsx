@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Tab from './Tab';
-import Schedule from './Schedule';
-import Request from './Request';
+import Tab from './Tab.jsx';
+import Schedule from './Schedule.jsx';
+import Request from './Request.jsx';
 
 const OneThird = styled.div`
   border-style: solid;
