@@ -155,7 +155,11 @@ const LocalInfo = styled.div`
 
 const ScheduleTourContainer = styled.div`
   width: 21%;
-  background-color: blue;
+  // background-color: blue;
+  justify-content: flex-start;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
   border: solid;
 `;
 
@@ -365,6 +369,7 @@ const ModalCarousel = (props) => {
             </GridGallery>
             <ScheduleTourContainer>
               <ScheduleTour></ScheduleTour>
+              <PadderVertical></PadderVertical>
             </ScheduleTourContainer>
           </LocalInfo>
         </LocalInfoBox>

@@ -20,7 +20,7 @@ const Button = styled.button`
   transition: box-shadow 0s ease 0s, border 0s ease 0s;
   color: rgb(0, 120, 130);
 
-  margin-top: 16px;
+  margin-top: 0px;
   border-radius: 8px;
   cursor: pointer;
   display: inline-block;
