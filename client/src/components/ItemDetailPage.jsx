@@ -148,7 +148,7 @@ const ItemDetailPage = (props) => {
         <Social>
           <SocialButton>
             <SaveIcon>
-              <img src="./icons/like.svg"></img>
+              <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/like.svg"></img>
             </SaveIcon>
             <SocialButtonText>
               Save
@@ -156,7 +156,7 @@ const ItemDetailPage = (props) => {
           </SocialButton>
           <SocialButton>
             <ShareIcon>
-              <img src="./icons/share.svg" style={{"color":"red"}}></img>
+              <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/share.svg" style={{"color":"red"}}></img>
             </ShareIcon>
             <SocialButtonText>
               Share

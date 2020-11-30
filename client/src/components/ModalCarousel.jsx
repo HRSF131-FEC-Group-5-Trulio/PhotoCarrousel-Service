@@ -298,7 +298,7 @@ const ModalCarousel = (props) => {
             <NavBarTabItem>
               <NavBarButtonSocial>
                 <LikeIcon>
-                  <img src="./icons/like.svg"></img>
+                  <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/like.svg"></img>
                 </LikeIcon>
                 <NavBarButtonText>
                   Save
@@ -308,7 +308,7 @@ const ModalCarousel = (props) => {
             <NavBarTabItem>
               <NavBarButtonSocial>
                 <ShareIcon>
-                  <img src="./icons/share.svg"></img>
+                  <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/share.svg"></img>
                 </ShareIcon>
                 <NavBarButtonText>
                   Share
@@ -318,7 +318,7 @@ const ModalCarousel = (props) => {
             <NavBarTabItem>
               <NavBarButtonClose onClick={props.closeModal}>
                 <CloseIcon>
-                  <img src="./icons/close.svg"></img>
+                  <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/close.svg"></img>
                 </CloseIcon>
               </NavBarButtonClose>
             </NavBarTabItem>
