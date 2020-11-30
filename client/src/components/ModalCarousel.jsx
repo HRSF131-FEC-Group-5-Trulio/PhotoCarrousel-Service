@@ -75,10 +75,10 @@ const ShareIcon = styled(NavBarIcon)`
 const CloseIcon = styled(NavBarIcon)`
   height: 25px;
   width: 25px;
-  &:hover { // _TODO: X should turn green on hover!
-    background-color: black;
-    fill: white;
-  }
+  // &:hover { // _TODO: X should turn green on hover!
+  //   background-color: black;
+  //   fill: white;
+  // }
 `;
 
 const NavBarTabItem = styled.div`
@@ -130,9 +130,9 @@ const NavBarButtonActive = styled(NavBarButton)`
 `;
 
 const NavBarButtonClose = styled(NavBarButton)`
-  &:hover {
-    background-color: rgb(255, 255, 255);
-  }
+  // &:hover {
+  //   background-color: rgb(255, 255, 255);
+  // }
 `;
 
 // ---> Layout is: row1 = GalleryHeader, row2 = GridGallery, ScheduleTour
