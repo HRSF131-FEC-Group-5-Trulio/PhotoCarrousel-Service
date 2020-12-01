@@ -13,24 +13,27 @@ const Page = styled.div`
 const Photos = styled.div`
   transition: transform 0.5s;
   &:hover {
-    transform: scale(1.04);
+    transform: scale(1.15);
   }
   display: flex;
   justify-content: center;
   width: 100%;
   // border: solid;
   height: 520px;
+  transform: scale(1.1);
 `;
 
 const PhotosBoxParent = styled.div`
   display: flex;
   justify-content: center;
-  position: relative;
+  // position: relative;
   // border: solid;
   // width: 100%;
   width: 1000px;
   overflow: hidden;
   border-radius: 8px;
+  transform: scale(0.9);
+  position: absolute;
 `;
 
 const ColPhotosBox = styled.div`
@@ -43,16 +46,16 @@ const ColPhotosBox = styled.div`
   height: 98%;
   margin-left: 5px;
   margin-top: 5px;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  // border-top-right-radius: 25px;
+  // border-bottom-right-radius: 25px;
 `;
 
 const BigPhoto = styled.img`
   height: 510px;
   width: 744px;
   padding: 5px;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
+  // border-top-left-radius: 25px;
+  // border-bottom-left-radius: 25px;
 `;
 
 const LilPhoto = styled.img`

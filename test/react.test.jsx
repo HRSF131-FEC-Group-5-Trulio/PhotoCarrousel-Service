@@ -73,5 +73,5 @@ test("Given an Object \"listings\" as a prop, it shallow renders ModalCarousel c
   const wrapper = shallow(<div><ModalCarousel listing={sampleListing}/></div>);
   expect(wrapper.find(ModalCarousel)).toHaveLength(1);
 });
-
+``
 
