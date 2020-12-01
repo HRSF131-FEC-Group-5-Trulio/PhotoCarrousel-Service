@@ -43,16 +43,16 @@ const ColPhotosBox = styled.div`
   height: 98%;
   margin-left: 5px;
   margin-top: 5px;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  // border-top-right-radius: 25px;
+  // border-bottom-right-radius: 25px;
 `;
 
 const BigPhoto = styled.img`
   height: 510px;
   width: 744px;
   padding: 5px;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
+  // border-top-left-radius: 25px;
+  // border-bottom-left-radius: 25px;
 `;
 
 const LilPhoto = styled.img`
