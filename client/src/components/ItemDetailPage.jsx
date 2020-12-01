@@ -8,6 +8,9 @@ const Page = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: 100px;
+  // border: solid;
+  height: 500px;
+  position: relative;
 `;
 
 const Photos = styled.div`
@@ -22,6 +25,11 @@ const Photos = styled.div`
   height: 520px;
   transform: scale(1.1);
 `;
+
+// const PhotosBoxContainer = styled.div`
+//   position: relative;
+//   border: solid red;
+// `;
 
 const PhotosBoxParent = styled.div`
   display: flex;
@@ -198,36 +206,36 @@ const getTags = (newConstruction, quickMoveIn) => {
 const ItemDetailPage = (props) => {
   return (
     <Page>
-      <PhotosBoxParent>
-        {
-          getTags(props.newConstruction, props.quickMoveIn)
-        }
-        <Social>
-          <SocialButton>
-            <SaveIcon>
-              <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/like.svg"></img>
-            </SaveIcon>
-            <SocialButtonText>
-              Save
-            </SocialButtonText>
-          </SocialButton>
-          <SocialButton>
-            <ShareIcon>
-              <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/share.svg"></img>
-            </ShareIcon>
-            <SocialButtonText>
-              Share
-            </SocialButtonText>
-          </SocialButton>
-        </Social>
-        <Photos>
-          <BigPhoto src={props.photos.large[0]}></BigPhoto>
-          <ColPhotosBox>
-            <LilPhoto_upper src={props.photos.small[0]}></LilPhoto_upper>
-            <LilPhoto_lower src={props.photos.small[1]}></LilPhoto_lower>
-          </ColPhotosBox>
-        </Photos>
-      </PhotosBoxParent>
+        <PhotosBoxParent>
+          {
+            getTags(props.newConstruction, props.quickMoveIn)
+          }
+          <Social>
+            <SocialButton>
+              <SaveIcon>
+                <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/like.svg"></img>
+              </SaveIcon>
+              <SocialButtonText>
+                Save
+              </SocialButtonText>
+            </SocialButton>
+            <SocialButton>
+              <ShareIcon>
+                <img src="https://fec-demo.s3-us-west-1.amazonaws.com/S3_images/icons/share.svg"></img>
+              </ShareIcon>
+              <SocialButtonText>
+                Share
+              </SocialButtonText>
+            </SocialButton>
+          </Social>
+          <Photos>
+            <BigPhoto src={props.photos.large[0]}></BigPhoto>
+            <ColPhotosBox>
+              <LilPhoto_upper src={props.photos.small[0]}></LilPhoto_upper>
+              <LilPhoto_lower src={props.photos.small[1]}></LilPhoto_lower>
+            </ColPhotosBox>
+          </Photos>
+        </PhotosBoxParent>
     </Page>
   );
 }
