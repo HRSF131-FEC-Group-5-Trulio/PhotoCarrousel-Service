@@ -5,12 +5,14 @@ const path = require("path");
 // local files
 const Carousels = require("../db/models/carousels.js");
 const fs = require("fs");
+const compression = require("compression");
 
 // constants
 const port = 3001;
 const public_clientDir = path.join(__dirname, "../client");
 const public_staticDir = path.join(public_clientDir, "/dist");
 
+app.use(compression());
 app.use(/*"/:id",*/express.static(public_staticDir)); // for proxy
 app.use("/:id", express.static(public_staticDir));
 

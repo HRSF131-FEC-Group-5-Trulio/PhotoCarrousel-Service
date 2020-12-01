@@ -20,6 +20,7 @@ module.exports = {
       }
     ]
   },
+  mode: "production",
   //   rules: [
   //     {
   //       test: /\.jsx?$/,
